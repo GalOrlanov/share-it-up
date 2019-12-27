@@ -1,0 +1,28 @@
+
+
+.logo{
+  width: 110px;
+  height: 50px;
+  position: relative;
+
+}
+
+.app-background{
+  background-color: rgba(162, 211, 192,0.93);
+  width:90%;
+  margin-left: 5%;
+  margin-top:calc(5% + 65px);
+  overflow: auto;
+  position: fixed;
+
+  height: 90%;
+}
+.viewsRender{
+  text-align: center;
+  height: 100%;
+  
+  width: 100%;
+  overflow: hidden;
+  background-color: #6F6969;
+  align-items: center;
+}

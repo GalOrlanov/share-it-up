@@ -1,0 +1,84 @@
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div *ngIf="this.dataService.addMembers" style="position: absolute; left: 40%; margin-top: 30%; margin-left: '-200px' ;">
+    <app-add-members  [newUser]="true" ></app-add-members>
+    </div>
+<div class="main-wrapper"> 
+    <app-groups ></app-groups>
+<div class="header">
+        <img class="profile-image" src={{this.dataService.groupImage}}/>
+        <div class='details-wrapper'>
+            <h1 class='group-name'> {{this.dataService.groupName}}</h1>
+            <app-group-details    [totalPrice]='this.userService.totalForGroup' [totalMembers]='groupMembers.length' [myOwe]='this.userService.oweMe * -1' ></app-group-details>
+            <div class='add-item-img' (click)="openAddItem()" > <i  style='font-size: 50px;margin-top:3px;'class="fas fa-plus"></i></div> 
+          </div>
+       
+</div>
+
+<app-add-item *ngIf="this.dataService.hideOrShowAddItem" ></app-add-item>
+
+
+<div class='content-wrapper'>
+<div class='group-activity-wrapper'>
+<div class='group-activity'> 
+        <table class="table">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Activity</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">10/10/2019</th>
+                    <td>Gal Added milk item</td>
+                  </tr>
+                </tbody>
+              </table>
+</div>
+
+<div class="group-members" >
+<div class="group-members-title"> <h3 class="members-title">Group Members:</h3>
+   <button (click)="this.dataService.addMembers=!this.dataService.addMembers" style="background-color: transparent; margin-left: 100px; border: transparent; position: absolute; right: 10px" ><i class="fa fa-user-plus" style="font-size:30px;"></i></button>
+</div>
+
+<div class="members-wrapper" >
+    <div (mouseenter)='member.show=false' class='members-card' *ngFor='let member of this.dataService.groupMembers' >
+      <div >
+        <img *ngIf='member.pic' class="member-image" src={{member.pic}}>
+        <img *ngIf='!member.pic' class="member-image" src='https://res.cloudinary.com/dendjmf47/image/upload/v1573317700/holding_avatar.png'>
+       
+        <p class="member-name"> {{member.firstname + " "+ member.lastname}}   </p>
+       
+      </div>
+      <p *ngIf='member.admin' class='is-admin'>Admin </p>
+        <div *ngIf='isAdmin' class="dropdown" style="float:right;">
+          <button  (click)='member.show === true ? member.show = false : member.show=true' (click)='member.class === "fa fa-chevron-down" ? member.class = "fa fa-chevron-up"  : member.class = "fa fa-chevron-down" ' class="dropbtn"> <i class={{member.class}}></i> </button>
+          <div *ngIf='member.show' class="dropdown-content">
+          <button (click)='closeMenu()' class='button-dropdown'>{{getAdminForButton(member.admin)}}</button>
+          <button (click)='closeMenu(this.dataService.groupId,member.email)' class='button-dropdown' > Remove</button>
+          </div>
+        </div>
+</div>
+</div>
+</div>
+</div>
+<div class="list-wrapper"> 
+   
+    <h1  *ngIf='!this.userService.users || this.userService.users.length === 0 '>There is no items in this group. </h1>
+   
+    <button type="button" (click)="openAddItem()" class="btn btn-primary" *ngIf="this.userService.users === undefined || !this.userService.users || this.userService.users.length === 0 ">add Items</button>
+<div class="list" *ngFor="let item of this.userService.users">
+
+    <div *ngIf='item.newDate || this.userService.users.length===1 '  class="date-title">{{dateForTitle(item.date)}}  </div>
+
+    <app-item-card  (mouseenter)='deleteItem(item._id)' (mouseleave)="deleteItem(item._id)" *ngIf='!item.bills' [id]='item._id' [hover]='isHover' [date]='dateForItem(item.date)' [split]='item.split' [image]='item.pic' [itemName]='item.item' [itemId]='item._id' [currency]='item.currency' [price]='item.price' [paidBy]='item.buyerName'></app-item-card>
+
+
+</div>
+</div>
+</div>
+</div>

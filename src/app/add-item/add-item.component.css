@@ -1,0 +1,170 @@
+.main-wrapper{
+    width: 400px;
+    height: 600px;
+    z-index: 9999999;
+    position: absolute;
+    background-color: rgba(255,255,255,0.8);
+    border: 1px solid black;
+    border-radius: 15px;
+    margin-left: 300px;
+    top: 50px;
+    text-align: center;
+
+}
+
+.textfield{
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 90%;
+}
+
+.close-btn{
+   margin: 10px;
+}
+.input-number{
+    width: 90%;
+    margin-top: 20px;
+    margin-left: 20px;
+    justify-content: space-evenly;
+}
+
+.images-wrapper{
+    width: 100%;
+    height: 133px;
+    background-color: bisque;
+    border: 1px solid black;
+    text-align: left;
+    display: inline-flex;
+    margin-top: 30px;
+    overflow-x: scroll;
+    z-index: 100;
+    position: absolute;
+    left: 0;
+    
+
+    
+}
+
+.img{
+    height: 130px;
+    border: 1px solid black;
+    margin:1px;
+    display: inline-block;
+    width: 130px;
+    size: 130px;
+    top: 0;
+    cursor: pointer;
+}
+.img:hover{
+    opacity: 0.7;
+}
+
+.img-plus{
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 120px;
+    right: 30%;
+}
+
+.add-btn{
+    margin-top: 30px;
+        
+    
+}
+
+
+.split-wrapper{
+    margin-top:20px;
+	display: flex;
+	text-align: center;
+}
+
+
+
+h1, h2, h3, h4, h5, h6{
+	font-weight: 150;
+}
+
+h1{
+	text-align: center;
+	padding-bottom: 10px;
+	border-bottom: 2px solid #2fcc71;
+	max-width: 60%;
+	margin: 20px auto;
+}
+
+/* CONTAINERS */
+
+.container {max-width: 850px; width: 100%; margin: 0 auto; }
+.four { width: 40%; max-width: 40%;}
+
+
+/* COLUMNS */
+
+.col {
+  display: block;
+  float:left;
+  margin: 5% 0 1% 1.6%;
+}
+
+.col:first-of-type { margin-left: 0; }
+
+/* CLEARFIX */
+
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+.cf {
+    *zoom: 1;
+}
+
+/* FORM */
+
+.form .plan input, .form .payment-plan input, .form .payment-type input{
+	display: none;
+}
+
+.form label{
+	position: relative;
+	color: #fff;
+	background-color: rgb(183, 181, 197);
+	font-size: 20px;
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+	width: 220px;
+	display: block;
+	cursor: pointer;
+	border: 3px solid transparent;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.form .plan input:checked + label, .form .payment-plan input:checked + label, .form .payment-type input:checked + label{
+	border: 3px solid #333;
+	background-color: #0e2b88;
+}
+
+.form .plan input:checked + label:after, form .payment-plan input:checked + label:after, .form .payment-type input:checked + label:after{
+	content: "\2713";
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 100%;
+	border: 2px solid #333;
+	background-color: #0e2b88;
+	z-index: 999;
+	position: absolute;
+	top: -10px;
+	right: -10px;
+}
+

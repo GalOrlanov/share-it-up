@@ -1,0 +1,45 @@
+<div class="page-wrapper">
+<div class='add_group_frame'>
+    <button (click)="closeAddGroup()" type="button" class="close close-btn" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+<h2 class='topic'> Add Group</h2>
+<div class='image_wrapper'> 
+  <img class='image-set'  *ngIf='this.dataService.groupImg ' src={{this.dataService.groupImg}} />
+  <img class='image'  *ngIf='!this.dataService.groupImg ' src="../../../assets/images/photo-camera.png" />        
+        <label >
+                <img class="img-plus" src="../../../assets/images/plus.png"/>
+                <input type="file" (change)="upload($event)" style="visibility: hidden;" ng2FileSelect [uploader]="this.cloudinaryService.uploader" accept="image/*;capture=camera" >
+           </label>
+</div>
+<div class="md-form text-field">
+                <label for="materialLoginFormEmail">Group Name:</label>
+              <input #groupName type="email" id="materialLoginFormEmail" class="form-control" placeholder='Enter Group Name'mdbInput>
+            
+            </div>
+            <circle-progress *ngIf='this.dataService.proggress !== 0 && this.dataService.proggress !== 100'
+            style="z-index: 99999; position: absolute;"
+            [percent]='this.dataService.proggress'
+            [radius]="100"
+            [outerStrokeWidth]="16"
+            [innerStrokeWidth]="8"
+            [outerStrokeColor]="'#78C000'"
+            [innerStrokeColor]="'#C7E596'"
+            [unitsFontSize]="'30'"
+            [titleFontSize]="'30'"
+            [titleColor]="'#ffffff'"
+            [unitsColor]="'#ffffff'"
+            
+            [animationDuration]="00"
+          ></circle-progress>
+
+<div class='btn-groups'>
+                <button type="button" class="btn btn-primary btn-lg btn-block" (click)="setShowMember()">Add Members</button>
+                <button type="button" class="btn btn-secondary btn-lg btn-block" (click)="makeGroup(groupName.value)">Create Group</button>
+ </div>
+
+</div>
+<app-add-members *ngIf="this.dataService.showAddMember"></app-add-members>
+
+</div>

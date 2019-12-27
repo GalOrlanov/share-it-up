@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<div class="groups-wrapper">
+
+<div  class="group-content-div" *ngFor="let group of this.dataService.groupList">
+    <div class="group-wrapper"  (click)="openCurrentGroup(group[0])" >
+<img class="friendscard-image {{wiggle}}"  *ngIf='group[0].details.groupImage' then src={{group[0].details.groupImage}} />
+<img class="friendscard-image {{wiggle}}" *ngIf='!group[0].details.groupImage'  src="../../../assets/images/group.png"  />
+<p class="group-name-title">{{group[0].details.groupName}}</p>
+</div>
+</div>
+
+<label >
+    <img class="add-group-button" src="../../../assets/images/plus.png"/>
+    <button class="add-group-button" (click)="openAddGroup()" style="visibility: hidden;"></button>
+</label>
+<label >
+        <button class="delete-group-button" (click)="openDeleteGroup()" style="background-color: transparent; color: black; border-color: transparent; "><i style="font-size: 25px !important" class="fas fa-trash-alt "></i></button>
+    </label>
+</div>
+<app-add-group *ngIf="this.dataService.showAddGroup"></app-add-group>

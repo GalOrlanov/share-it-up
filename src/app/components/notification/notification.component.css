@@ -1,0 +1,29 @@
+.alert-msg{
+    margin-right: 40px;
+    background-color: rgba(241, 246, 247, 0.973);
+    width: 400px;
+    border: 1px solid;
+    border-radius: 10px;
+    position: absolute;
+    height: 100px;
+    display: flex;
+    right: 10px;
+    align-items: center;
+    z-index: 999999;
+}
+
+.image{
+    border-radius: 50%;
+    height: 90px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 90px;
+
+}
+
+.details-div{
+  position: relative;
+  margin-left: 10px;
+    
+    
+}

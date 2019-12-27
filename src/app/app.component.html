@@ -1,0 +1,15 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+
+<div class="viewsRender">
+    <app-app-bar></app-app-bar>
+    <div class='app-background'>
+        <app-notification *ngIf='showMsg' [msg]='msgContent' [friend]='stockQuote'></app-notification>
+   
+        <app-spinner *ngIf="dataService.showOrHideSpinner"></app-spinner>
+  <router-outlet></router-outlet>
+    </div>
+</div>
+

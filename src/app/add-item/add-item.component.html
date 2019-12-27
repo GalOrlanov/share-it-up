@@ -1,0 +1,85 @@
+<div class="main-wrapper">
+    <button (click)="this.dataService.hideOrShowAddItem=! this.dataService.hideOrShowAddItem" type="button" class="close close-btn" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+        <h3>Add Item</h3>
+        <circle-progress *ngIf='this.dataService.proggress !== 0 && this.dataService.proggress !== 100'
+        style="z-index: 99999; position: absolute;"
+        [percent]='this.dataService.proggress'
+        [radius]="100"
+        [outerStrokeWidth]="16"
+        [innerStrokeWidth]="8"
+        [outerStrokeColor]="'#78C000'"
+        [innerStrokeColor]="'#C7E596'"
+        [unitsFontSize]="'30'"
+        [titleFontSize]="'30'"
+        [titleColor]="'#ffffff'"
+        [unitsColor]="'#ffffff'"
+        
+        [animationDuration]="00"
+      ></circle-progress>
+    <form #form="ngForm" (ngSubmit)="SubmitForm(form.value)">
+            <div class="input-group mb-3 textfield">
+            <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Item Name:</span>
+                  </div>
+                  <input type="text" required id="item" name="item" ngModel class="form-control"  aria-describedby="basic-addon1">
+            </div>
+
+            <div  class="input-group mb-3 input-number">
+                <div   class="input-group-prepend">
+                        <span  class="input-group-text" id="basic-addon1">Price:</span>
+                      </div>
+                      <input  class="input-group-text" [(ngModel)]='itemPrice' name="price" type="number" class="form-control"  style='color: black; width: 5%;'  >
+
+                        <select class="form-control" id="allocation-algorithm" name="currency" [(ngModel)]='cur'>
+                        
+                             <option  *ngFor="let currency of currencyArray" > {{currency.symbol}} - {{currency.name}} </option> 
+                            
+                          </select>
+                        
+                </div>
+                <div class="input-group mb-3 textfield">
+                        <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Date:</span>
+                              </div>
+                         
+                              <input type="date" [(ngModel)]="addDate" name="date" class="form-control"  aria-describedby="basic-addon1">
+                             
+                        </div>
+   
+    <div style='position: relative; '>
+    <img *ngIf="this.dataService.itemImage " class="img" src={{this.dataService.itemImage}} >
+    <img *ngIf="!this.dataService.itemImage" class="img" src='../../assets/images/itemTag.png' >
+    <label >
+                <img class="img-plus" src="../../../assets/images/plus.png"/>
+               <input type="file" (change)="upload($event)" ng2FileSelect [uploader]="this.cloudinaryService.uploader" accept="image/*;capture=camera" name="file"  style="visibility: hidden;"/>
+           </label>
+    </div>
+    <button type="button" (click)='showAndHideImgList()' class="btn btn-info">Choose from List</button>
+    
+    <div *ngIf='showImgList' class="images-wrapper">
+    <div *ngFor='let image of images'>
+    <img (click)='onImageClick(image.url)' class="img" src={{image.url}} />
+    </div>
+ 
+</div>
+
+<div class='split-wrapper'>
+    <h2 style='margin-left: 15px; padding-top: 5px;'>split:</h2>
+
+<div class="container">
+		<form class="form cf" >
+			<section class="plan cf">
+				<input type="radio" [(ngModel)]='showSplit' name="radio1" id="free" value="false"><label class="free-label four col" for="free">equally</label>
+				<input type="radio" [(ngModel)]='showSplit' name="radio1" id="premium" value="true"><label class="premium-label four col" for="premium">custom</label>
+			</section>
+		</form>
+  </div>
+  
+  <app-split [itemPrice]='itemPrice' style='margin-right: 20px; top:10px;' *ngIf='showSplit === "true"'></app-split>
+</div>
+<br/>
+<input type="submit" class="btn btn-info add-btn" value="Add Item"/>
+</form>
+</div>

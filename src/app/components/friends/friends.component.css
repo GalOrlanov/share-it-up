@@ -1,0 +1,120 @@
+.friends-wrapper{
+  margin-left: 15%;
+  
+}
+
+.example-small-box, .example-large-box {
+    display: flex;
+    margin: 16px;
+    padding: 16px;
+    border-radius: 8px;
+  }
+  
+  
+  .example-large-box {
+    height: 600px;
+    width: 70%;
+  }
+
+  /* Styles for tab labels */
+.mat-tab-label {
+    padding: 5px;
+    background-color: transparent;
+    color: black;
+    font-weight: 700;
+}
+
+/* Styles for the active tab label */
+.mat-tab-label.mat-tab-label-active {
+   
+    padding: 5px;
+    background-color: transparent;
+    color: black;
+    font-weight: 700;
+}
+
+/* Styles for the ink bar */
+.mat-ink-bar {
+    background-color: green;
+}
+
+p {
+  font-family: Lato;
+}
+
+.friend-in-title{
+    margin-bottom: 60%;
+    color: rgba(255,255,255,0.7);
+    padding: 16px;
+}
+
+.friends{
+    overflow: scroll;
+    min-width: 410px;
+    height: 90%;
+    flex-grow: inherit;
+}
+
+.friends-card{
+    width: 90%;
+    flex-grow: inherit;
+    margin-left: 5%;
+    min-width: 400px;
+    min-height: 90px;
+    background-color: transparent;
+    border-radius: 8px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+   
+}
+.friends-img{
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    float: left;
+    margin: 5px;
+   margin-right: 15px;
+}
+.friends-details{
+    text-align: left;
+    width: 80%;
+    padding-left:15px;
+  
+  
+}
+.friend-name{
+    padding-left:15px;
+}
+.delete-btn{
+    background-color: transparent;
+    border: transparent;
+}
+.friends-card:hover{
+    opacity: 0.6;
+}
+.add-friend-btn{
+    width: 100px;
+    height: 20px;
+}
+
+.friends-title{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    border-radius: 7px 7px 0 0;
+    justify-content: space-between;
+    background-color: rgba(0,0,0,0.8);
+}
+.add-friend-button{
+    background-color: transparent;
+     border-color: transparent; 
+     margin-right: 32px;
+     cursor: pointer;
+}
+.icon-color{
+    color: rgba(255,255,255,0.7);
+}
+.icon-color:hover{
+   color: rgb(255,255,255);
+}

@@ -1,0 +1,27 @@
+.card-div{
+    width: 700px;
+    height: 100px;
+    border: 1px solid white;
+    border-radius: 15px;
+    position: relative;
+    margin-bottom: 7px;
+}
+
+.card-img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    left: 3%;
+   margin-top: 9px;
+   
+    position: absolute;
+    
+}
+
+.product-name{
+    color: white;
+}
+
+.product-price{
+    color: white;
+}

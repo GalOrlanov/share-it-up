@@ -1,0 +1,35 @@
+.profilefulldiv{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+  position: absolute;
+  z-index: 0;
+  top: 5%; left: 0; bottom: 0; right: 0;
+}
+
+.profile-image{
+    background-color: rgb(203, 189, 189);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: block;
+    margin-top: 3%;
+    margin-bottom: 2%;
+    margin-left: auto;
+    margin-right: auto;
+ 
+}
+.edit-button{
+    background-color: aqua;
+    border-radius: 15px;
+    border: 1px solid;
+    align-items: center;
+    margin-left: 45%;
+}
+
+.details-wrapper{
+    margin-left: 25%;
+     text-align: left;
+   
+}
+

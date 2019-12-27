@@ -1,0 +1,90 @@
+.profile-image{
+    background-color: rgb(203, 189, 189);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-top: 2%;
+    margin-left: 2%;
+}
+.details-seperate{
+    width: 100%;
+  border: 0.01em solid ;
+}
+.Name{
+    font-size: 33px;
+    font-weight: bold;
+    
+}
+
+.profile-image-wrapper{
+    width:85%;
+    position: fixed;
+    margin-top:5%;
+    margin-left: 2.5%;
+    height: 320px;
+    background-color: white;
+    text-align: left;
+    display: flex;
+}
+  .groupandfriends{
+      margin-left:10%;
+       text-align: center;
+       
+      margin-right: 15%;
+  }
+  
+.wrap-content{
+justify-content: center;
+align-items: center;
+display: flex;
+
+ }
+ .box{
+    margin-top: calc(320px + 10%);
+    margin-left: 10%;
+    background-color: white;
+    width: 300px;
+    height: 300px;
+ }
+
+ .group-and-friends-wrapper{
+     display: flex;
+ }
+
+
+.groups-and-friends{
+    height: 55%;
+    width: 32%;
+    position: absolute;
+    margin: 3%;
+    margin-left: 65%;
+    background-color: white;
+    text-align: left;
+}
+
+.personal-details-title{
+margin: 3%;
+
+font-style: oblique;
+font-weight: 700;
+}
+.topic-details{
+margin-top: 3%;
+margin-left: 3%;
+width: 60%;
+}
+
+.details-item{
+    font-size: 25px;
+}
+
+
+.details-title{
+    white-space: nowrap;
+    font-size: 15px;
+}
+.details-number{
+    margin-top:10px;
+    font-size: 30px;
+}
+

@@ -1,0 +1,34 @@
+
+.nav-bar{
+    background-color: #ffffff;
+    position: fixed;
+    color: black;
+    top: 5%;
+    left:5%;
+    height: 70px;
+    width: 90%;
+  }
+
+  .selected-btn{
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .tab-btn{
+    padding-left: 20px;
+    background-color: rgba(0, 0, 0, 0);
+    color: black;
+    border: 1px rgba(0,0,0,0) solid;
+    border-right-color: grey;
+    padding-right: 20px;
+  }
+  
+  .last-btn{
+    border: 1px rgba(0,0,0,0) solid;
+  }
+  .sign-out-btn{
+  border: black;
+  float: right;
+  right: 50px; 
+  position: absolute;
+  }

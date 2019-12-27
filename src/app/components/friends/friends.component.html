@@ -1,0 +1,90 @@
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<app-add-friends *ngIf="showAddFriend"></app-add-friends>
+<div class="friends-wrapper">
+<mat-tab-group dynamicHeight>
+        <mat-tab  label="Friends">
+          <div class="example-large-box mat-elevation-z4 " style="max-width: 60%; display: flow-root; padding: 0px !important;" >
+            <div class="friends-title">
+            <h1 class="friend-in-title" >My Friends: </h1>
+            <button class='add-friend-button' (click)="showAddFriend=!showAddFriend"> 
+            <span style="font-size: 3rem;">
+            <span class="icon-color">
+      <i class="fa fa-user-plus" style="width: 30px;"></i>  
+          </span>
+        </span>
+      </button>
+          </div>
+            <div class="friends" >
+                    
+                    <div  *ngFor="let friend of this.registerService.userInfo.friends"  (mouseenter)="selectedFriend(false)" >
+                <div  (mouseenter)="selectedFriend(friend)" (mouseleave)="!selectedFriend(false)" class="friends-card mat-elevation-z4" *ngIf="friend.status==='true'"
+  
+              >
+                    <img *ngIf='friend.pic' class="friends-img" src={{friend.pic}}  /> 
+                    <img *ngIf='!friend.pic' class="friends-img" src='https://res.cloudinary.com/dendjmf47/image/upload/v1573317700/holding_avatar.png'  /> 
+                    <div class="friends-details" >
+                    <h3 style="padding-top:10px;" class="friend-name">{{friend.firstname}} {{friend.lastname}}</h3>
+                    <h4>{{friend.email}}</h4>
+                  </div>
+                  <button *ngIf='friend.selected ' class="delete-btn w3-xlarge" (click)="deleteFriend(friend.email)" > <i class="fa fa-trash "   > </i> </button>
+                </div>
+               
+                </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Outgoing">
+            <div class="example-large-box mat-elevation-z4" style="max-width: 60%; display: flow-root; padding: 0px !important;">
+              <div class='friends-title' >
+                <h1 class="friend-in-title" >My Outgoing: </h1>
+              </div>
+                
+                <div class="friends">
+                        <app-add-friends *ngIf="showAddFriend"></app-add-friends>
+                        <div  *ngFor="let friend of this.registerService.userInfo.friends">
+                    <div  (mouseenter)="showHideDeleteBtn='true'" (mouseleave)="showHideDeleteBtn=false" class="friends-card mat-elevation-z4" *ngIf="friend.status==='sent'"
+      
+                  >
+                  <img *ngIf='friend.pic' class="friends-img" src={{friend.pic}}  /> 
+                  <img *ngIf='!friend.pic' class="friends-img" src='https://res.cloudinary.com/dendjmf47/image/upload/v1573317700/holding_avatar.png'  /> 
+                        <div class="friends-details" >
+                        <h3 style="padding-top:10px;" class="friend-name">{{friend.firstname}} {{friend.lastname}}</h3>
+                        <h4>{{friend.email}}</h4>
+                      </div>
+                      <button *ngIf='showHideDeleteBtn ' class="delete-btn w3-xlarge" (click)="deleteFriend(friend.email)" > <i class="fa fa-trash "   > </i> </button>
+                    </div>
+                   
+                    </div>
+                </div>
+              </div>
+        </mat-tab>
+        <mat-tab label="Requests">
+            <div class="example-large-box mat-elevation-z4" style="max-width: 60%; display: flow-root; padding: 0px !important;">
+              <div class='friends-title' >
+                <h1 class="friend-in-title" >My Request: </h1>
+              </div>
+                
+                <div class="friends">
+                        <app-add-friends *ngIf="showAddFriend"></app-add-friends>
+                        <div  *ngFor="let friend of this.registerService.userInfo.friends">
+                    <div  (mouseenter)="showHideDeleteBtn='true'" (mouseleave)="showHideDeleteBtn=false" class="friends-card mat-elevation-z4" *ngIf="friend.status==='confirm'"
+      
+                  >
+                  <img *ngIf='friend.pic' class="friends-img" src={{friend.pic}}  /> 
+                  <img *ngIf='!friend.pic' class="friends-img" src='https://res.cloudinary.com/dendjmf47/image/upload/v1573317700/holding_avatar.png'  /> 
+                        <div class="friends-details" >
+                        <h3 style="padding-top:10px;" class="friend-name">{{friend.firstname}} {{friend.lastname}}</h3>
+                        <h4>{{friend.email}}</h4>
+                      </div>
+                      <button (click)="registerService.sendFriendRequest(friend.email,'true')" >Confirm</button>
+                      <button >Decline</button>
+                    </div>
+                   
+                    </div>
+                </div>
+              </div>
+              </mat-tab>
+      </mat-tab-group>
+    </div>

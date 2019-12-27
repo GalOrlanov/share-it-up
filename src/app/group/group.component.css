@@ -1,0 +1,277 @@
+.main-wrapper{
+   width: 100%;
+   height: 300px;
+   justify-items: flex-start;
+}
+.header{
+    display: flex;
+    text-align: left;
+}
+.profile-image{
+    background-color: rgb(203, 189, 189);
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    margin-top: 1%;
+    margin-left: 2%;
+}
+.details-wrapper{
+   text-align: left;
+}
+
+.list-wrapper{
+    background-color: rgba(56, 67, 75,0.76);
+    justify-content: space-around;
+    margin-right: 4%;
+    margin-left:8%;
+    margin-bottom: 15%;
+    width: 85%;
+    text-align: left;
+    height: 500px;
+    overflow-y: scroll;
+}
+.content-wrapper{
+    display: flex;
+}
+.group-activity-wrapper{
+    width: 350px;
+}
+.group-activity{
+    width: 400px;
+    max-width: 400px;
+    background-color: white;
+    height: 200px;
+    margin-left: 2%;
+    margin-top:2%;
+    margin-bottom: 10%;
+    overflow-y: scroll;
+}
+
+.group-members{
+    width: 400px;
+    max-width: 400px;
+    background-color: white;
+    height: 200px;
+    margin-left: 2%;
+    margin-top:2%;
+    margin-bottom: 2%;
+    overflow-y: scroll;
+}
+
+.group-name{
+    font-size: 40px;
+    margin-top:15px;
+    font-weight: 900;
+    margin-left: 40px;
+    color: white;
+    
+}
+
+.group-members-title{
+    background-color: #E8ECEF;
+    width: 100%;
+    height: 45px;
+    z-index: 999;
+    text-align: left;
+    top: 0;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    border-bottom: #DEE2E6 solid 2px;
+    border-top: #DEE2E6 solid 1px;
+}
+
+.members-title{
+    opacity: 0.7;
+    font-weight: 600;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.members-wrapper{
+    width: 100%;
+    height: 100%;
+   
+}
+
+.members-card{
+    width: 95%;
+    height: 60px;
+    border: #DEE2E6 solid 1px;
+    text-align: left;
+    display: flex;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-top: 5px;
+    text-align: justify;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.member-image{
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.member-name{
+    display: inline;
+    margin-left: 10px;
+}
+
+.date-title{
+    height: 40px;
+    background-color: #ffffff;
+    width: 100%;
+    position: sticky ;
+    font-weight: 600;
+    align-content: center;
+    z-index: 200;
+    top:0;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+
+.item{
+    width: 200px;
+    height: 200px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px black solid;
+    display: inline-block;
+    position: relative;
+    
+}
+
+
+
+.list{
+    display: inline;
+}
+
+
+.item-title{
+    background-color: #DEE2E6;
+    border-radius: 10px 10px 0 0;
+    
+}
+
+.item-image{
+    width: 198px;
+    height: 175px;
+    position: absolute;
+    display: block;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.3;
+    border-radius: 0 0 10px 10px;
+}
+.text-item{
+    z-index:100;
+    position: absolute;
+    margin-left: 15px;
+    font-weight: 600;
+}
+
+.text-price{
+    z-index:100;
+    position: absolute;
+    margin-top: 70px;
+    margin-left: 15px;
+    font-weight: 400;
+}
+
+.text-paid{
+    z-index:100;
+    margin-left: 10px;
+    position: absolute;
+    margin-top: 150px;
+}
+
+.delete-btn{
+    width: 10;
+    height: 10;
+    top: 15%;
+    left: 80%;
+    background-color: transparent;
+    border: transparent;
+}
+.item:hover{
+    opacity: 0.6;
+}
+.is-admin{
+    color: green;
+    display: flex;
+    
+}
+
+.add-item-img{
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    top: 200px;
+    position: absolute;
+    right:40px;
+    border-radius: 50%;
+    background-color: white;
+    font-weight: 800;
+}
+
+
+.dropbtn {
+    background-color: transparent;
+    border-color: transparent;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:active {background-color: #f1f1f1;}
+  
+  .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown:hover .dropbtn {
+    background-color:transparent;
+  }
+  .button-dropdown{
+      background-color: transparent;
+      cursor: pointer;
+      width: 100%;
+  }
+  .button-dropdown:hover{
+      background-color: teal;
+  }
+
+
+  

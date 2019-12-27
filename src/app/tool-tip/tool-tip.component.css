@@ -1,0 +1,47 @@
+.app-tooltip {
+    position: relative;
+  }
+  
+  .app-tooltip .app-tooltiptext {
+    visibility: hidden;
+    width: auto;
+    background-color: #fff;
+    height:auto;
+    color: #000;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    min-width: 200px;
+    
+    min-height: 100px;
+    z-index: 99999;
+    top: 125%;
+    left: 44%;
+    opacity: 1;
+    transition: opacity 0.3s;
+  }
+  
+  .app-tooltip .app-tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+  
+    left: 40%;
+    margin-left: -15px;
+    height: 5px;
+    border-width: 12px;
+    border-style: solid;
+    border-color: transparent  transparent #fff transparent;
+    
+  }
+  .icon{
+    text-align: end;
+    margin-top: 40px;
+    color: white;
+    border: 1px solid black;
+}
+  .app-tooltip:hover .app-tooltiptext{
+    visibility: visible;
+  }

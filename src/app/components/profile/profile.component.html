@@ -1,0 +1,40 @@
+<head>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+
+<div class="profile-image-wrapper mat-elevation-z6">
+<img *ngIf='registerService.userInfo.pic' class="profile-image" src={{registerService.userInfo.pic}}/>
+<img *ngIf='!registerService.userInfo.pic' class="profile-image" src='https://res.cloudinary.com/dendjmf47/image/upload/v1573317700/holding_avatar.png'/>
+<div class="topic-details">
+<p class="Name">{{registerService.userInfo.firstname +" "+  registerService.userInfo.lastname}}</p>
+<p class="details-item"><i class="fas fa-envelope"></i>{{" " +registerService.userInfo.email}}</p>
+<p class="details-item"><i class="fas fa-phone"></i>{{" " +registerService.userInfo.phone}}</p>
+<hr class='details-seperate' />
+<div class='group-and-friends-wrapper'>
+<div class='groupandfriends'>
+        <p class='details-title'>Number of groups</p>
+        <p class='details-number'>{{this.registerService.userInfo.groups.length}}</p>
+</div>
+<div class='groupandfriends'>
+                <p class='details-title'>Number of Friends</p>
+                <p class='details-number'>{{this.registerService.userInfo.friends.length}}</p>
+        </div>
+</div>
+</div>
+
+
+</div>
+<div class="wrap-content">
+<div class="box mat-elevation-z6">
+                <br/>   <br/>
+              <h2>Total Owed</h2>
+              <br/>   <br/>
+              <h3>100$</h3>
+      </div>
+      <div class="box mat-elevation-z6">
+                <br/>   <br/>
+                <h2>Total Owes</h2>
+                <br/>   <br/>
+                <h3>200$</h3>
+        </div>
+</div>

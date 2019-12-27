@@ -1,0 +1,70 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+	</head>
+	<div *ngIf='this.dataService.openResetPasswordDialog' style='width:100%;position: absolute; z-index: 99999; top:0; left:0; height: 100%; background-color: rgba(0,0,0 , 0.6);'></div>
+	<div *ngIf='this.dataService.openResetPasswordDialog' style='z-index: 99999999; position: fixed; top: 35%; left: 50%; margin-left: -200px'>
+			<app-forgetpasswort  ></app-forgetpasswort>
+		</div>
+<div class={{container}} id="container">
+
+	<div class="form-container sign-up-container">
+		<form #form="ngForm" >
+			<h1>Create Account</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-twitter"></i></a>
+			</div>
+			<span>or use your email for registration</span>
+			<div class="create-acount"> 
+			<input [(ngModel)]="firstName" name='firstName'type="text" placeholder="First Name" />
+			<input [(ngModel)]='lastName' name='lastName' placeholder="Last Name" />
+			<input [(ngModel)]='userEmail' name='email' type="email" placeholder="Email" />
+			<input [(ngModel)]='userPassword' name='password' type="password" placeholder="Password (6 characters maximum)"/>
+			<input [(ngModel)]='confirmPass' name='confirm' type="password-confirm" placeholder="Confirm Password" />
+			<input [(ngModel)]='userPhone' name='phone'type="phone" placeholder="Phone" />
+			<input [(ngModel)]='userAdress' name='address' type="address" placeholder="Address" />
+			</div>
+			<button (click)="submitSignUp()" >Sign Up</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form #form="ngForm" (ngSubmit)="SubmitForm(form.value)">
+			<h1>Sign in</h1>
+			<div class="social-container">
+				<a href='http://share-it-server.herokuapp.com/auth/facebook' class="social"><i class="fab fa-facebook-f" ></i></a>
+				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-twitter"></i></a>
+			</div>
+			<span>or use your account</span>
+			<input type="email" placeholder="Email" name="email" ngModel />
+			<input type="password" placeholder="Password" name="password" ngModel />
+
+			<button 
+			type="button"
+			style='background-color: transparent; border-color: transparent; color: black; width: 500px' 
+			(click)='this.dataService.openResetPasswordDialog=!this.dataService.openResetPasswordDialog'>
+			 Forgot your password? 
+			</button>
+
+			<span *ngIf='wrongLoginDetails' style='color:red; ' >Wrong Username or Password</span>
+			<button type="submit">Sign In</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>To keep connected with us please login with your personal info</p>
+				<button class="ghost" (click)='signIn()' id="signIn">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Friend!</h1>
+				<p>Enter your personal details and start journey with us</p>
+				<button class="ghost" (click)="signUp()" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
+	
+</div>

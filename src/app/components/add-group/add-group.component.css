@@ -1,0 +1,96 @@
+.add_group_frame{
+    width: 20%;
+    background-color:rgba(255,255,255, 0.9);
+    border: 1px black solid;
+    border-radius: 15px;
+    color: white;
+    height: 450px;
+    position: relative;
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    z-index: 100;
+    margin-left: 40%;
+    margin-right: 40%;
+    margin-top: 5%;
+}
+.topic{
+  color: black;
+
+}
+  .close-btn{
+   float: right;
+   position: absolute;
+   top: 5px;
+   right: 5px;
+  
+}
+.image{
+    width:140px;
+    height:140px;
+   margin-top: 20px;
+    position: relative;
+   
+}
+.image-set{
+    width:200px;
+    height:200px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.image_wrapper{
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 1;
+    position: absolute;
+    text-align: center;
+    top: 60px;
+    background:  linear-gradient(
+        to left,
+        rgb(218, 222, 223) 0%,
+        rgb(147, 167, 167) 100%
+      );
+}
+.img-plus{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    bottom: 30px;
+    left: 140px;
+    cursor: pointer;
+    transition: transform .2s;
+    
+}
+.img-plus:hover{
+    width: 50px;
+    height: 50px;
+    transform: scale(1.5);
+}
+
+
+.text-field{
+    position: absolute;
+    color: black;
+    bottom: 120px;
+}
+
+.btn-groups{
+width:80%;
+bottom: 10px;
+position: absolute;
+margin : 5px;
+}
+
+
+ .page-wrapper{
+     margin-top: 200px;
+     width: 100%;
+     height: 100%;
+     position: absolute;
+     background-color: rgba(0,0,0,0.5);
+     z-index: 100;
+     text-align: center;
+ }

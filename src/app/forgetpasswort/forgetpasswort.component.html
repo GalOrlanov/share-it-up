@@ -1,0 +1,17 @@
+
+<div  style='width: 400px; height: 300px; background-color: white; ' class='mat-elevation-z4'>
+        <h1 mat-dialog-title>Reset password</h1>
+        <div style='background-color: black; width:90%; height: 0.2mm; margin-left: 5%;margin-top: 5px;'></div>
+        <div  style='padding-bottom: 10%;'>
+          <p>Please enter your email address , we will make sure that this email is valid and registered,
+                we will send  to you a link to reset your password.</p>
+        
+                <input type="text"  placeholder="email" [(ngModel)]='email'/>
+                
+                </div>
+                <div>
+                <button type="button" style='border-radius: 10px; background-color: blue; margin-right: 20px;' (click)='this.serverApi.resetPassword(email)' class="btn btn-primary">Ok</button>
+                <button type="button"style='border-radius: 10px; background-color: red;' (click)='this.dataService.openResetPasswordDialog=false' class="btn btn-danger">cancel</button>
+                </div>
+        
+        </div>

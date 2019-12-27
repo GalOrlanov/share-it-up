@@ -1,0 +1,12 @@
+
+
+<div class="addfriend mat-elevation-z4">
+        <button (click)="showAddByEmail= !showAddByEmail" type="button" class="btn btn-secondary">Add By Email</button>
+        <button type="button" class="btn btn-primary">Invite Friend</button>
+        <div *ngIf="showAddByEmail">
+            <h2>Enter Email Address:</h2>
+            <input #emailoffriend type="text" >
+            <button  (click)="sendFriendRequest(emailoffriend.value,'sent')" type="button" class="btn btn-success">Add</button>
+            
+        </div>
+        </div>
