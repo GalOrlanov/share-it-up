@@ -18,7 +18,7 @@ export class SocketService {
   observer: Observer<any>;
    
   getQuotes() : Observable<any> {
-    this.socket = socketIo('http://share-it-server.herokuapp.com');
+    this.socket = socketIo('https://share-it-server.herokuapp.com');
     this.socket.on('data', (res) => {
       console.log("get data")
       this.observer.next(res.data);

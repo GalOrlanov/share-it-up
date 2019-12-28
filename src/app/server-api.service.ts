@@ -9,7 +9,7 @@ export class ServerApiService {
   constructor(private http:HttpClient) { }
 
 
- url = "http://share-it-server.herokuapp.com"
+ url = "https://share-it-server.herokuapp.com"
  testUrl = "http://localhost:3000"
 
 

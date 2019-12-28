@@ -8,7 +8,7 @@ import { BillsService } from './bills.service';
   providedIn: 'root'
 })
 export class UsersService {
-url:string = 'http://share-it-server.herokuapp.com';
+url:string = 'https://share-it-server.herokuapp.com';
 name:any='';
 users:Array<any>=[];
 totalForGroup:any=0;
