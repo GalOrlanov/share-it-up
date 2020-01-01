@@ -49,6 +49,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ToolTipComponent } from './tool-tip/tool-tip.component';
 import { DebugComponent } from './debug/debug.component';
 import { AppBarComponent } from './app-bar/app-bar.component';
+import { FriendCardComponent } from './friend-card/friend-card.component';
+import { SettleUpCardComponent } from './settle-up-card/settle-up-card.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +80,9 @@ import { AppBarComponent } from './app-bar/app-bar.component';
     ForgetpasswortComponent,
     ToolTipComponent,
     DebugComponent,
-    AppBarComponent
+    AppBarComponent,
+    FriendCardComponent,
+    SettleUpCardComponent
     
   ],
   imports: [

@@ -92,8 +92,8 @@ input {
 .container {
 	background-color: #fff;
 	border-radius: 10px;
-	margin-top: 20%;
-
+	margin-top: 10%;
+    margin-bottom: 100px;
   	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
 			0 10px 10px rgba(0,0,0,0.22);
 	position: relative;
@@ -103,6 +103,16 @@ input {
 	min-height: 480px;
 }
 
+.image-plus{
+	border-radius: 50%;
+	width: 15px;
+	height: 15px;
+}
+.profile-image{
+	border-radius: 50%;
+	width: 90px;
+	height: 90px;
+}
 .form-container {
 	position: absolute;
 	top: 0;

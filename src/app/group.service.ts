@@ -25,7 +25,7 @@ export class GroupService {
   
   const promise =
   new Promise((resolve, reject) => {
-    return this.http.post<any>('http://share-it-server.herokuapp.com/api/users/group/details',{ groupsArray } ,  {headers:headers}).toPromise().then(
+    return this.http.post<any>('https://share-it-server.herokuapp.com/api/users/group/details',{ groupsArray } ,  {headers:headers}).toPromise().then(
       res => {
         this.dataService.groupList = res;
         console.log(this.dataService.groupList);
@@ -55,7 +55,7 @@ export class GroupService {
   
   const promise =
   new Promise((resolve, reject) => {
-    return this.http.get<any>('http://share-it-server.herokuapp.com/api/users/group/members/' + groupId ,  {headers:headers}).toPromise().then(
+    return this.http.get<any>('https://share-it-server.herokuapp.com/api/users/group/members/' + groupId ,  {headers:headers}).toPromise().then(
       res => {
         console.log(res)
     this.dataService.groupMembers = res;
@@ -88,7 +88,7 @@ export class GroupService {
         
         const promise =
         new Promise((resolve, reject) => {
-          return this.http.post<any>('http://share-it-server.herokuapp.com/api/users/group/detailsupdate/' , obj,  {headers:headers}).toPromise().then(
+          return this.http.post<any>('https://share-it-server.herokuapp.com/api/users/group/detailsupdate/' , obj,  {headers:headers}).toPromise().then(
             res => {
               console.log(res);
             resolve(res);
@@ -119,7 +119,7 @@ export class GroupService {
 
   const promise =
   new Promise((resolve, reject) => {
-    return this.http.post<any>('http://share-it-server.herokuapp.com/api/users/group/addmember',obj, {headers:headers}).toPromise().then(
+    return this.http.post<any>('https://share-it-server.herokuapp.com/api/users/group/addmember',obj, {headers:headers}).toPromise().then(
       res => {
         console.log(res);
       resolve(res);
@@ -143,7 +143,7 @@ export class GroupService {
 
         const promise =
         new Promise((resolve, reject) => {
-          return this.http.post<any>('http://share-it-server.herokuapp.com/api/users/group/deletemember/',{groupId,userEmail}, {headers:headers}).toPromise().then(
+          return this.http.post<any>('https://share-it-server.herokuapp.com/api/users/group/deletemember/',{groupId,userEmail}, {headers:headers}).toPromise().then(
             res => {
               console.log(res);
             resolve(res);
@@ -170,7 +170,7 @@ export class GroupService {
       
               const promise =
               new Promise((resolve, reject) => {
-                return this.http.delete<any>('http://share-it-server.herokuapp.com/api/users/group/delete/'+ groupId , {headers:headers}).toPromise().then(
+                return this.http.delete<any>('https://share-it-server.herokuapp.com/api/users/group/delete/'+ groupId , {headers:headers}).toPromise().then(
                   res => {
                    
                   resolve(res);

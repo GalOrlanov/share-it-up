@@ -57,7 +57,7 @@ else{
    this.deleteGroup=true;
    this.serverApi.interactWithServer("DELETE" , {
     "imageId": "1234"
-  } , 'http://share-it-server.herokuapp.com/items/deleteimage',true)
+  } , 'https://share-it-server.herokuapp.com/items/deleteimage',true)
  }
   openAddGroup(){
     this.dataService.showAddGroup=!this.dataService.showAddGroup;

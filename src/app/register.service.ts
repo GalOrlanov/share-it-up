@@ -14,7 +14,7 @@ import { GroupService } from './group.service';
 export class RegisterService {
   socket:any;
   constructor(private groupService:GroupService, private http:HttpClient,private socketService: SocketService, private authService: AuthService) { }
-url ="http://share-it-server.herokuapp.com/api/users"
+url ="https://share-it-server.herokuapp.com/api/users"
 userInfo:any = '';
 userToken:String = '';
 friendrequest:any = {};

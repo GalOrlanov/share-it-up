@@ -1,0 +1,59 @@
+.card-wrapper{
+    min-width: 400px;
+    width: 95%;
+    height: 150px;
+    position: relative;
+
+}
+.card{
+    min-width: 350px;
+    height: 100%;
+    width: 95%;
+    margin-left: 40px;
+    border-radius: 20px;
+    background-color: white;
+}
+.image{
+    width: 120px;
+    height: 120px;
+    border-radius: 20px;
+}
+
+.details{
+    display: flex;
+    margin-top: -20px;
+    margin-left: 90px;
+  
+}
+.button{
+    width: 80px;
+    height: 25px;
+    border-radius: 20px;
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    font-size: 12px;
+}
+
+.price{
+  color: grey;  
+}
+.owe{
+    margin-left: 15px;
+    margin-top: -5px;
+    margin-right: 20px;
+}
+
+.name{
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+color: darkgrey;
+}
+.image-box{
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    top: 50%;
+    border-radius: 20px;
+    margin-top: -60px;
+    background-color: blue;
+}

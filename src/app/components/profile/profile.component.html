@@ -19,22 +19,50 @@
                 <p class='details-title'>Number of Friends</p>
                 <p class='details-number'>{{this.registerService.userInfo.friends.length}}</p>
         </div>
+        <div class='groupandfriends'>
+                        <p class='details-title'>Total Owe</p>
+                        <p class='details-number'>100$</p>
+                </div>
+                <div class='groupandfriends'>
+                                <p class='details-title'>Total owes</p>
+                                <p class='details-number'>200$</p>
+                        </div>
 </div>
 </div>
 
 
 </div>
 <div class="wrap-content">
-<div class="box mat-elevation-z6">
-                <br/>   <br/>
-              <h2>Total Owed</h2>
-              <br/>   <br/>
-              <h3>100$</h3>
-      </div>
-      <div class="box mat-elevation-z6">
-                <br/>   <br/>
-                <h2>Total Owes</h2>
-                <br/>   <br/>
-                <h3>200$</h3>
+
+        <div class='box'>
+                        <h2 class='friend-title'>Settle Up</h2>
+                        <hr />
+                        <div class='settle-box'>
+                                        <app-settle-up-card></app-settle-up-card>
+                        </div>
         </div>
-</div>
+
+        <div class='groupFriendsBox'>
+                   <div class='small-box'>
+                                <h2 class='friend-title'>Friends</h2>
+                                <hr />
+                                <div class='friend-box'>
+                    <div style='margin-right: 6px;' *ngFor='let friend of this.registerService.userInfo.friends'>
+                         <app-friend-card [name]='friend.firstname +" " + friend.lastname'[image]='friend.pic'></app-friend-card>
+                        </div>
+                                </div>
+                   </div>   
+                   <div class='small-box'>
+                                <h2 class='friend-title'>Groups</h2>
+                                <hr />
+                                <div class='friend-box'>
+                                                <div style='margin-right: 6px;' *ngFor='let group of groupsArray'>
+                                                     <app-friend-card [name]='group[0].details.groupName'[image]='group[0].details.groupImage'></app-friend-card>
+                                                    </div>
+                        </div>  
+               
+        </div>
+       
+
+       
+        </div>

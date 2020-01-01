@@ -7,6 +7,7 @@ import { disableDebugTools } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { NotificationComponent } from '../notification/notification.component'
 import {DataServiceService} from '../../data-service.service'
+import { GroupService } from 'src/app/group.service';
 
 
 
@@ -14,7 +15,7 @@ import {DataServiceService} from '../../data-service.service'
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
   friendrequest;
@@ -24,7 +25,7 @@ export class ProfileComponent implements OnInit {
   searchStr:string = '';
   showNotification=false;
   datatopass= '';
-
+  groupsArray= [];
   //subscribe
   emailSelected= false;
   smsSelected= false;
@@ -35,7 +36,8 @@ export class ProfileComponent implements OnInit {
     private route: ActivatedRoute ,
     private notificationComponent: NotificationComponent,
     public dataService:DataServiceService,
-    private router:Router ) { 
+    private router:Router,
+    private groupService: GroupService ) { 
 
   }
    
@@ -61,6 +63,11 @@ if(value === 'email' ){
 
 
   ngOnInit() {
+    this.groupService.getGroupsDetails(this.registerService.userInfo.groups)
+    .then((res:any)=> { 
+      this.groupsArray = res  
+    console.log(this.groupsArray) } )
+    
     if(!this.registerService.userInfo){
     this.registerService.updateUserInfo(null).then(()=>{
       if(!this.registerService.userInfo){

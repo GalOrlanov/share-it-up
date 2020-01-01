@@ -10,7 +10,7 @@ export class ServerApiService {
 
 
  url = "https://share-it-server.herokuapp.com"
- testUrl = "http://localhost:3000"
+ testUrl = "https://localhost:3000"
 
 
 interactWithServer(requestType , obj , url,token){
@@ -19,7 +19,7 @@ interactWithServer(requestType , obj , url,token){
   let headers = new HttpHeaders({
      'Content-Type' :  'application/json',
      'Accept': 'application/json',
-     //'X-Requested-With': 'XMLHttpRequest',
+     'X-Requested-With': 'XMLHttpRequest',
 
 });
 if(token){
@@ -65,12 +65,12 @@ return this.interactWithServer('DELETE' ,obj , url,true)
 
 login(obj){
   let url = `${this.url}/api/users/login`
- return this.interactWithServer('POST',obj,url,false)
+ return this.interactWithServer('POST',obj, url,false)
 }
 
 
 resetPassword(email){
-  let url = `http://share-it-server.herokuapp.com/api/users/changepassword/${email}`
+  let url = `https://share-it-server.herokuapp.com/api/users/changepassword/${email}`
   return this.interactWithServer("GET" ,null, url,false);
 }
 
