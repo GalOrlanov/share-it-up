@@ -6,6 +6,19 @@ import { SocketService } from './socket.service';
 import { Subscription, timer } from 'rxjs';
 import { timeInterval } from 'rxjs/operators';
 import { GroupService } from './group.service';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule
+  ],
+  
+})
+
+export class AppModule { }
 
 @Component({
   selector: 'app-root',

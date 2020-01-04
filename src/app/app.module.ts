@@ -51,6 +51,7 @@ import { DebugComponent } from './debug/debug.component';
 import { AppBarComponent } from './app-bar/app-bar.component';
 import { FriendCardComponent } from './friend-card/friend-card.component';
 import { SettleUpCardComponent } from './settle-up-card/settle-up-card.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import { SettleUpCardComponent } from './settle-up-card/settle-up-card.component
     MatSelectModule,
     Ng5SliderModule,
     MatRadioModule,
+    ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
     RouterModule,
