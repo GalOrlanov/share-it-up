@@ -21,8 +21,6 @@ friendrequest:any = {};
 
 add(obj:any)
   {
-    
-    
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post<any>(this.url,obj,{headers:headers}).subscribe((res) => {
      console.log(res);

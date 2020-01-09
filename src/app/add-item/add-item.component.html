@@ -3,21 +3,7 @@
         <span aria-hidden="true">&times;</span>
       </button>
         <h3>Add Item</h3>
-        <circle-progress *ngIf='this.dataService.proggress !== 0 && this.dataService.proggress !== 100'
-        style="z-index: 99999; position: absolute;"
-        [percent]='this.dataService.proggress'
-        [radius]="100"
-        [outerStrokeWidth]="16"
-        [innerStrokeWidth]="8"
-        [outerStrokeColor]="'#78C000'"
-        [innerStrokeColor]="'#C7E596'"
-        [unitsFontSize]="'30'"
-        [titleFontSize]="'30'"
-        [titleColor]="'#ffffff'"
-        [unitsColor]="'#ffffff'"
-        
-        [animationDuration]="00"
-      ></circle-progress>
+    
     <form #form="ngForm" (ngSubmit)="SubmitForm(form.value)">
             <div class="input-group mb-3 textfield">
             <div class="input-group-prepend">
@@ -49,6 +35,24 @@
                         </div>
    
     <div style='position: relative; '>
+        
+            <circle-progress *ngIf='this.dataService.proggress !== 0 && this.dataService.proggress !== 100'
+            style="z-index: 99999; position: absolute; left:50%; margin-left:-65px"
+            [percent]='this.dataService.proggress'
+            [radius]="50"
+            [outerStrokeWidth]="10"
+            [innerStrokeWidth]="0"
+            [outerStrokeColor]="'#541f4c'"
+            [innerStrokeColor]="'#C7E596'"
+            [unitsFontSize]="'30'"
+            [titleFontSize]="'30'"
+            [titleColor]="'#000000'"
+            [unitsColor]="'#000000'"
+            [backgroundColor]='"rgba(255,255,255,0.8)"'
+            [animationDuration]="00"
+          ></circle-progress>
+    
+        
     <img *ngIf="this.dataService.itemImage " class="img" src={{this.dataService.itemImage}} >
     <img *ngIf="!this.dataService.itemImage" class="img" src='../../assets/images/itemTag.png' >
     <label >

@@ -4,6 +4,7 @@ import { UsersService } from '../users.service';
 import { DataServiceService } from '../data-service.service';
 import { RegisterService } from '../register.service';
 import { MembersComponent } from '../members/members.component';
+import { StatsService } from '../stats.service';
 
 @Component({
   selector: 'app-graphs',
@@ -12,7 +13,7 @@ import { MembersComponent } from '../members/members.component';
 })
 export class GraphsComponent implements OnInit {
 
-  constructor(public userService:UsersService,public dataService:DataServiceService,public registerService:RegisterService) { }
+  constructor(public userService:UsersService,public dataService:DataServiceService,public registerService:RegisterService,private statsServie:StatsService) { }
    graphArr=[];
    tableArr=[];
 
@@ -85,38 +86,41 @@ makeDataForGraph(){
  console.log( this.chart.data);
  }
 
-
+/*
  dataForTable(){
    let memberArr = [];
    this.dataService.groupMembers.map((groupMember)=>{
     memberArr.push({name: groupMember.firstname +" " + groupMember.lastname , email: groupMember.email , oweMe: 0 , youOwe: 0 });
    })
   this.userService.users.map((item)=>{
-    console.log(item)
     item.split.map((splitArray)=>{
     if(splitArray.email === this.registerService.userInfo.email){
         memberArr.map((member)=>{
           splitArray.oweMe.map((owe)=>{
           if(member.email === owe.email){
-            console.log(owe.owe)
             member.oweMe += owe.owe === undefined ? 0 : owe.owe
           }
-
         })
-       
+        splitArray.oweTo.map((owe)=>{
+          console.log(owe)
+          if(member.email === owe.email){
+            member.youOwe += owe.owe === undefined ? 0 : owe.owe
+          }
+        })
+     
       })
     
     }
     })
   })
-  console.log(memberArr);
+
   this.tableArr =memberArr;
  }
-
+*/
 
   ngOnInit() {
   this.makeDataForGraph();
-  this.dataForTable();
+  this.tableArr = this.statsServie.dataForTable(this.userService.users)
   }
 
 }

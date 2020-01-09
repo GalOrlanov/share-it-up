@@ -6,7 +6,7 @@
        <input type='search' class='search-input' placeholder="Search Friend" [(ngModel)]="searchStr" />
     <div class='cards-frame'>
         <div *ngFor='let friend of this.registerService.userInfo.friends | filter:searchStr'>
-<div *ngIf='this.checkIfMemberInGroup(friend)'[ngStyle]="{'background-color' : asd(friend)  ? 'rgba(255,255,255,0.7' : 'white' }" (click)='passDataToAddGroup(friend)' class='card'>
+<div *ngIf='this.checkIfMemberInGroup(friend) || newGroup'[ngStyle]="{'background-color' : asd(friend)  ? 'rgba(255,255,255,0.7' : 'white' }" (click)='passDataToAddGroup(friend)' class='card'>
     <div class='image-wrapper'>
     <img *ngIf='friend.pic'src={{friend.pic}} class='img-group' />
     <img *ngIf='!friend.pic' src='https://res.cloudinary.com/dendjmf47/image/upload/v1573317700/holding_avatar.png' class='img-group' />

@@ -8,6 +8,9 @@ import { ActivatedRoute } from '@angular/router';
 import { NotificationComponent } from '../notification/notification.component'
 import {DataServiceService} from '../../data-service.service'
 import { GroupService } from 'src/app/group.service';
+import { UsersService } from 'src/app/users.service';
+import { ServerApiService } from 'src/app/server-api.service';
+import { StatsService } from 'src/app/stats.service';
 
 
 
@@ -28,6 +31,7 @@ export class ProfileComponent implements OnInit {
   groupsArray= [];
   //subscribe
   emailSelected= false;
+  settleArray= [];
   smsSelected= false;
   
 
@@ -37,7 +41,10 @@ export class ProfileComponent implements OnInit {
     private notificationComponent: NotificationComponent,
     public dataService:DataServiceService,
     private router:Router,
-    private groupService: GroupService ) { 
+    private groupService: GroupService,
+    private userServie:UsersService ,
+    private serverApi: ServerApiService,
+    private statsService:StatsService) { 
 
   }
    
@@ -60,14 +67,42 @@ if(value === 'email' ){
 }
 }
 
+getDataForSettleUp(){
+  this.registerService.userInfo.groups((group)=>{
+   this.userServie.getItemList(group)
+  })
+}
 
+getTotalOwe(isMyOwe){
+  let returnValue =0;
+  console.log(this.settleArray)
+  this.settleArray.map((owe) => {
+    
+    isMyOwe ? 
+    returnValue += owe.oweMe 
+    :
+    returnValue += owe.youOwe
+  })
+console.log(returnValue)
+  return returnValue.toFixed(0);
+}
 
   ngOnInit() {
     this.groupService.getGroupsDetails(this.registerService.userInfo.groups)
     .then((res:any)=> { 
       this.groupsArray = res  
     console.log(this.groupsArray) } )
+
+    let obj = {groupArray: this.registerService.userInfo.groups}
+    this.serverApi.getAllItems(obj).then( (res:any)=>
+    {
+      this.settleArray =  this.statsService.dataForTable(res.groupArray);
+    console.log(this.settleArray)
+    this.getTotalOwe(false);
+    })
+
     
+
     if(!this.registerService.userInfo){
     this.registerService.updateUserInfo(null).then(()=>{
       if(!this.registerService.userInfo){
@@ -81,7 +116,7 @@ if(value === 'email' ){
    this.socketService.connectToSocket(this.registerService.userInfo.email);
    this.dataService.groupId= this.registerService.userInfo.groups[0] ? this.registerService.userInfo.groups[0] : null;
    this.dataService.showOrHideSpinner = false;
-
+   
   }
 
 

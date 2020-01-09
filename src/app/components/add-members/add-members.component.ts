@@ -14,6 +14,7 @@ export class AddMembersComponent implements OnInit {
   searchStr = '';
   friendsList= [];
 @Input('newUser')  isNewUser:boolean;
+@Input() newGroup:boolean;
 
 
   asd(fr){
@@ -48,6 +49,7 @@ export class AddMembersComponent implements OnInit {
   }
 
   checkIfMemberInGroup(friend){
+    
     var inGroup=true;
     this.dataService.groupMembers.map((groupMember)=>{
 if(friend.email === groupMember.email){

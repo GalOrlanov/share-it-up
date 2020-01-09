@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { RegisterService } from './register.service';
 import { DataServiceService } from './data-service.service';
 import { BillsService } from './bills.service';
+import { promise } from 'protractor';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,6 +12,7 @@ export class UsersService {
 url:string = 'https://share-it-server.herokuapp.com';
 name:any='';
 users:Array<any>=[];
+allItems=[]
 totalForGroup:any=0;
 oweMe:number= 0;
 myOwen:number=0;
@@ -33,7 +35,6 @@ getItemList(groupId){
   .subscribe(data => {
     let current = 13;
      data.map((item)=>{
-      
       if(!item.memberSchema){
         if(item.buyerEmail === this.registerService.userInfo.email){
           item.split.map((member)=>{
@@ -53,15 +54,12 @@ getItemList(groupId){
     this.users=data;
     this.users.map((item,index)=>{
       if(item.memberSchema){
-       
         this.users.splice(index,1);
       }
     })
-
-    
     this.dataService.showOrHideSpinner=false;
 });
-  
+   
 }
 
 addItem(obj):any{
@@ -89,7 +87,6 @@ deleteItem(group,id){
   .subscribe((res : any[])=>{
   this.getItemList(group);
   });
-
 
 }
 

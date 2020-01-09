@@ -11,8 +11,10 @@
         <img class="profile-image" src={{this.dataService.groupImage}}/>
         <div class='details-wrapper'>
             <h1 class='group-name'> {{this.dataService.groupName}}</h1>
+            <div style='display: flex;'>
             <app-group-details    [totalPrice]='this.userService.totalForGroup' [totalMembers]='groupMembers.length' [myOwe]='this.userService.oweMe * -1' ></app-group-details>
             <div class='add-item-img' (click)="openAddItem()" > <i  style='font-size: 50px;margin-top:3px;'class="fas fa-plus"></i></div> 
+          </div>
           </div>
        
 </div>
@@ -42,7 +44,7 @@
 
 <div class="group-members" >
 <div class="group-members-title"> <h3 class="members-title">Group Members:</h3>
-   <button (click)="this.dataService.addMembers=!this.dataService.addMembers" style="background-color: transparent; margin-left: 100px; border: transparent; position: absolute; right: 10px" ><i class="fa fa-user-plus" style="font-size:30px;"></i></button>
+   <button (click)="this.dataService.addMembers=!this.dataService.addMembers" style="background-color: transparent; margin-left: 100px; border: transparent;" ><i class="fa fa-user-plus" style="font-size:30px;"></i></button>
 </div>
 
 <div class="members-wrapper" >

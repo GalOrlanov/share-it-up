@@ -9,17 +9,17 @@ export class ServerApiService {
   constructor(private http:HttpClient) { }
 
 
- url = "https://share-it-server.herokuapp.com"
- testUrl = "https://localhost:3000"
+ url = "http://share-it-server.herokuapp.com"
+//url = "https://localhost:3000"
 
 
-interactWithServer(requestType , obj , url,token){
+interactWithServer(requestType , obj , url , token){
   let tokenFromsession = JSON.parse(sessionStorage.getItem('userinfo'));
   let serverRequest:any;
   let headers = new HttpHeaders({
      'Content-Type' :  'application/json',
      'Accept': 'application/json',
-     'X-Requested-With': 'XMLHttpRequest',
+    'X-Requested-With': 'XMLHttpRequest',
 
 });
 if(token){
@@ -68,10 +68,22 @@ login(obj){
  return this.interactWithServer('POST',obj, url,false)
 }
 
+signUp(useDetails){
+  let url = `${this.url}/api/users/`
+  return this.interactWithServer('POST', useDetails ,url, false);
+}
 
 resetPassword(email){
-  let url = `https://share-it-server.herokuapp.com/api/users/changepassword/${email}`
+  let url = `${this.url}/api/users/changepassword/${email}`
   return this.interactWithServer("GET" ,null, url,false);
+}
+
+
+/***********groups **********/
+
+getAllItems(groupArr){
+  let url = `${this.url}/items/allitems`
+  return this.interactWithServer("POST" , groupArr , url , true);
 }
 
 

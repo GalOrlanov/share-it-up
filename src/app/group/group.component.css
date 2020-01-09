@@ -71,7 +71,7 @@
     background-color: #E8ECEF;
     width: 100%;
     height: 45px;
-    z-index: 999;
+    z-index: 800;
     text-align: left;
     top: 0;
     display: flex;
@@ -125,6 +125,7 @@
     background-color: #ffffff;
     width: 100%;
     position: sticky ;
+    position:-webkit-sticky;
     font-weight: 600;
     align-content: center;
     z-index: 200;
@@ -214,9 +215,7 @@
     width: 60px;
     height: 60px;
     text-align: center;
-    top: 200px;
-    position: absolute;
-    right:40px;
+    cursor: pointer;
     border-radius: 50%;
     background-color: white;
     font-weight: 800;

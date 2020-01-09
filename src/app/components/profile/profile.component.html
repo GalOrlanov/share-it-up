@@ -21,11 +21,11 @@
         </div>
         <div class='groupandfriends'>
                         <p class='details-title'>Total Owe</p>
-                        <p class='details-number'>100$</p>
+                        <p class='details-number'>{{getTotalOwe(false)}}</p>
                 </div>
                 <div class='groupandfriends'>
                                 <p class='details-title'>Total owes</p>
-                                <p class='details-number'>200$</p>
+                                <p class='details-number'>{{getTotalOwe(true)}}</p>
                         </div>
 </div>
 </div>
@@ -38,7 +38,11 @@
                         <h2 class='friend-title'>Settle Up</h2>
                         <hr />
                         <div class='settle-box'>
-                                        <app-settle-up-card></app-settle-up-card>
+                                <div *ngFor='let settle of settleArray '>
+                                                <app-settle-up-card [name]='settle.name' [image]='this.statsService.getImageWithEmail(settle.email)' [youOwe]='settle.youOwe.toFixed(1)' [oweYou]='settle.oweMe.toFixed(1)'> </app-settle-up-card>
+                                </div>
+                                       
+                               
                         </div>
         </div>
 
@@ -52,6 +56,7 @@
                         </div>
                                 </div>
                    </div>   
+                   <br/>
                    <div class='small-box'>
                                 <h2 class='friend-title'>Groups</h2>
                                 <hr />
@@ -60,7 +65,6 @@
                                                      <app-friend-card [name]='group[0].details.groupName'[image]='group[0].details.groupImage'></app-friend-card>
                                                     </div>
                         </div>  
-               
         </div>
        
 
