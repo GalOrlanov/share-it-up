@@ -30,7 +30,10 @@ max-height: 55px;
 
   .selected-btn{
     font-size: 18px;
-    font-weight: bold;
+    
+  }
+  .navbar-brand{
+    size: 30px;
   }
 
   .tab-btn{
