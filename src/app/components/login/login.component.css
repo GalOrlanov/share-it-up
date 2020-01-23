@@ -166,7 +166,15 @@ input {
 	transition: transform 0.6s ease-in-out;
 	z-index: 100;
 }
-
+textarea,
+input.text,
+input[type="text"],
+input[type="button"],
+button[type="submit"],
+.input-checkbox {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
 .container.right-panel-active .overlay-container{
 	transform: translateX(-100%);
 }
@@ -264,4 +272,20 @@ footer a {
 }
 .create-acount{
 overflow:auto;
+}
+
+
+@media only screen and (max-width: 600px) {
+#container{
+	display: none;
+}
+
+.mobile-login{
+	margin-top: 30%;
+	
+}
+
+.mobile-submit{
+	cursor: pointer;
+}
 }

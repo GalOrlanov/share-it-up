@@ -1,4 +1,23 @@
-
+@media only screen and (max-width: 600px) {
+.nav-bar{
+top : 0 !important;
+width: 100% !important;
+margin-left: 0 !important;
+left : 0 !important;
+max-height: 55px;
+}
+.mobile-sign-out{
+  position: absolute !important;
+  font-size: 20px;
+  display: table !important;
+  top:25px;
+  right: 15px;
+  cursor: pointer;
+}
+}
+.mobile-sign-out{
+  display: none;
+}
 .nav-bar{
     background-color: #ffffff;
     position: fixed;

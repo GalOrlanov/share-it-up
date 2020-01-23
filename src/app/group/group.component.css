@@ -5,6 +5,7 @@
 }
 .header{
     display: flex;
+
     text-align: left;
 }
 .profile-image{
@@ -28,7 +29,8 @@
     width: 85%;
     text-align: left;
     height: 500px;
-    overflow-y: scroll;
+    display: block;
+    overflow-y: auto;
 }
 .content-wrapper{
     display: flex;
@@ -125,7 +127,8 @@
     background-color: #ffffff;
     width: 100%;
     position: sticky ;
-    position:-webkit-sticky;
+    position: -webkit-sticky;
+    align-self: flex-start;
     font-weight: 600;
     align-content: center;
     z-index: 200;
@@ -231,6 +234,8 @@
     border: none;
     cursor: pointer;
   }
+
+
   
   .dropdown {
     position: relative;
@@ -238,7 +243,6 @@
   }
   
   .dropdown-content {
-    display: none;
     position: absolute;
     right: 0;
     background-color: #f9f9f9;
@@ -247,30 +251,87 @@
     z-index: 1;
   }
   
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  .dropdown-content a:active {background-color: #f1f1f1;}
-  
-  .dropdown-content {
-    display: block;
-  }
-  
+
   .dropdown:hover .dropbtn {
     background-color:transparent;
   }
+
   .button-dropdown{
       background-color: transparent;
       cursor: pointer;
       width: 100%;
   }
+
+  .group-details{
+      display: flex;
+  }
   .button-dropdown:hover{
       background-color: teal;
   }
+  .mobile-btns{
+    display: none;
+
+      
+  }
+  @media only screen and (max-width: 600px) {
+    .group-activity-wrapper{
+        display: none;
+    }
+.main-wrapper{
+    margin-top: 75px;
+}
 
 
+
+.group-name{
+    font-size: 18px;
+    margin-left: 0px;
+    width: 100%;
+    margin-top: 0 !important;
+}
+.mobile-btns{
+    display: flex;
+    justify-content: space-between;
+
+      
+  }
+  .add-item-img{
+      display: none;
+  }
+    .list-wrapper{
+        margin-left: 0px !important;
+        width: 100%;
+        margin-right: 0px;
+        max-width: 100%;
+        overflow-x:  hidden !important;
+    }
+    .details-wrapper{
+        text-align: center;
+    }
+    .group-details{
+        display: table;
+        width: 100% !important;
+    }
+    .app-groups{
+        display: none;
+    }
+
+    .profile-image{
+        width: 70px;
+        height:70px;
+    }
+    .header{
+        display: table;
+        text-align: center;
+        width: 100%;
+        margin-top: -10px;
+    }
+
+    .button{
+        height: 40px;
+        font-size: 12px;
+    }
+   
+    
+  }
   

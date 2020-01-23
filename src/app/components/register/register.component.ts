@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
    imagestr = null;  
    SubmitForm(form:any){
      form["pic"]=this.imagestr ? this.imagestr : 'https://res.cloudinary.com/dendjmf47/image/upload/v1573317700/holding_avatar.png' ;
-    this.registerService.add(form);
+    //this.registerService.add(form);
     
    this.router.navigateByUrl('/login');
    }

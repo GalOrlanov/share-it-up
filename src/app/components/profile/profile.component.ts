@@ -33,6 +33,7 @@ export class ProfileComponent implements OnInit {
   emailSelected= false;
   settleArray= [];
   smsSelected= false;
+  myOwes=0;
   
 
   constructor(private socketService:SocketService,
@@ -45,7 +46,7 @@ export class ProfileComponent implements OnInit {
     private userServie:UsersService ,
     private serverApi: ServerApiService,
     private statsService:StatsService) { 
-
+      console.log("asdajksdkasdj");
   }
    
   changeshowAddByEmail(){
@@ -75,7 +76,6 @@ getDataForSettleUp(){
 
 getTotalOwe(isMyOwe){
   let returnValue =0;
-  console.log(this.settleArray)
   this.settleArray.map((owe) => {
     
     isMyOwe ? 
@@ -83,40 +83,52 @@ getTotalOwe(isMyOwe){
     :
     returnValue += owe.youOwe
   })
-console.log(returnValue)
   return returnValue.toFixed(0);
 }
 
+
+setMyOwes(){
+  let max:any = this.getTotalOwe(true)
+  console.log(max)
+ setInterval(()=>{
+if(this.myOwes >= max) {
+  return;
+}
+this.myOwes++;
+},0.5)
+
+}
   ngOnInit() {
     this.groupService.getGroupsDetails(this.registerService.userInfo.groups)
     .then((res:any)=> { 
       this.groupsArray = res  
-    console.log(this.groupsArray) } )
+     } )
 
     let obj = {groupArray: this.registerService.userInfo.groups}
     this.serverApi.getAllItems(obj).then( (res:any)=>
     {
       this.settleArray =  this.statsService.dataForTable(res.groupArray);
-    console.log(this.settleArray)
+    
     this.getTotalOwe(false);
+    this.setMyOwes();
     })
 
     
-
     if(!this.registerService.userInfo){
     this.registerService.updateUserInfo(null).then(()=>{
+     
       if(!this.registerService.userInfo){
         this.router.navigateByUrl('/login')
       }
     })
   }
     
-    
+    /*
    //this.registerService.addToActivityLog("asdasdasdasdasdasdasd");
    this.socketService.connectToSocket(this.registerService.userInfo.email);
    this.dataService.groupId= this.registerService.userInfo.groups[0] ? this.registerService.userInfo.groups[0] : null;
    this.dataService.showOrHideSpinner = false;
-   
+   */
   }
 
 

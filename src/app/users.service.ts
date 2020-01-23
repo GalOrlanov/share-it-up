@@ -51,6 +51,7 @@ getItemList(groupId){
      }
     }
     })
+    console.log(data)
     this.users=data;
     this.users.map((item,index)=>{
       if(item.memberSchema){

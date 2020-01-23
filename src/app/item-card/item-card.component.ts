@@ -34,7 +34,6 @@ splitArray=[]
   }
 
 calculateOwes(){
- console.log(this.split)
  this.split.map((member)=>{
    this.splitArray.push(`${member.name}-   ${member.totalPay}${this.currency}`)
  })

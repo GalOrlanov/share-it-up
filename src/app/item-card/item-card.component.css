@@ -104,6 +104,25 @@ left: 0;
 
 
 }
+
 .card-wrapper:hover .delete-btn{
 visibility: visible;
+}
+
+@media only screen and (max-width: 600px) {
+
+.card-wrapper{
+    width: 48%;
+    
+}
+.image{
+    width:100%
+}
+.card__by {
+    font-size: 10px;
+}
+
+
+
+
 }

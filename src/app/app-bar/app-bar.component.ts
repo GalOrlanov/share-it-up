@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../register.service';
 import { Router } from '@angular/router';
 import { DataServiceService } from '../data-service.service';
+import { SocketService } from '../socket.service';
 
 @Component({
   selector: 'app-app-bar',
@@ -10,12 +11,13 @@ import { DataServiceService } from '../data-service.service';
 })
 export class AppBarComponent implements OnInit {
 
-  constructor(public registerService:RegisterService,private router:Router,public dataService:DataServiceService) { }
+  constructor(public registerService:RegisterService,private router:Router,public dataService:DataServiceService, private socketService:SocketService) { }
   selected = 'profile';
   ngOnInit() {
   }
 
   signOut(){
+    this.socketService.disconectFromSocket(this.registerService.userInfo.email);
     this.registerService.userInfo = null;
     this.router.navigateByUrl('/login');
   }
@@ -33,10 +35,6 @@ export class AppBarComponent implements OnInit {
     this.selected='groups';
     if(this.registerService.userInfo){
     this.dataService.hideOrShowGroups=!this.dataService.hideOrShowGroups;
-    if(!this.dataService.groupId){
-      return;
-    }
-
    this.router.navigateByUrl('/group')
   }
   else{

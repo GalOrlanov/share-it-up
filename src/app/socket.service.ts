@@ -6,6 +6,7 @@ import { map, catchError } from 'rxjs/operators';
 import * as socketIo from 'socket.io-client';
 
 import { Socket } from '../app/shared/interfaces';
+import { getMaxListeners } from 'cluster';
 
 declare var io : {
   connect(url: string): Socket;
@@ -20,12 +21,13 @@ export class SocketService {
   getQuotes() : Observable<any> {
     this.socket = socketIo('http://share-it-server.herokuapp.com');
     this.socket.on('data', (res) => {
-      console.log("get data")
       this.observer.next(res.data);
     });
-
     return this.createObservable();
   }
+
+  
+
 
  sendserver (to,from,pic, name,deletefriend, status) {
 
@@ -43,8 +45,13 @@ export class SocketService {
 }
 
 connectToSocket(email){
+  console.log(email)
   this.socket.emit('connectWithEmail' , {email:email
   });
+}
+
+disconectFromSocket(email){
+  this.socket.emit('logout', {email})
 }
 
 

@@ -1,5 +1,12 @@
 
-
+    @media only screen and (max-width: 600px) {
+   .app-background{
+     width: 100% !important;
+     height: 100% !important;
+     margin-top: 0 !important;
+     margin-left: 0 !important;
+   }
+    }
 .logo{
   width: 110px;
   height: 100px;

@@ -80,15 +80,8 @@ let members= []
 let splitPrice = this.itemPrice / this.dataService.splitArray.length;
 this.dataService.splitArray.map((member)=>{
   let totalOwe = member[1] > splitPrice ? member[1] - splitPrice : 0; 
- members.push({name: member[4] , email: member[0] , pay: member[1], totalOwe: totalOwe, totalPay: member[1] , oweMe: [], oweTo: []});
+ members.push({name: member[4] ,groupMembers: this.dataService.groupMembers, email: member[0] , pay: member[1], totalOwe: totalOwe, totalPay: member[1] , oweMe: [], oweTo: []});
 })
-
-
-  let memberss =  [{name: 'gal' , email: 'galoelanov@gmail.com' , pay: 300, totalOwe: 200, totalPay: 300 , oweMe: [], oweTo: []},
-     {name: 'Natali' , email: 'Natali@gmail.com' , pay: 100, totalOwe: 0, totalPay: 100 , oweMe: [], oweTo: []},
-     {name: 'lihi' , email: 'lihi@gmail.com' , pay: 0, totalOwe: 100, totalPay: 0, oweMe: [], oweTo: [] },
-     {name: 'aa' , email: 'aa@gmail.com' , pay: 0, totalOwe: 100, totalPay: 0 , oweMe: [], oweTo: []}]
-  
 
 
 for(let i =0 ; i< members.length ; i++){

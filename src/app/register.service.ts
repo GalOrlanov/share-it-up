@@ -14,66 +14,14 @@ import { GroupService } from './group.service';
 export class RegisterService {
   socket:any;
   constructor(private groupService:GroupService, private http:HttpClient,private socketService: SocketService, private authService: AuthService) { }
-url ="https://share-it-server.herokuapp.com/api/users"
+//url ="https://share-it-server.herokuapp.com/api/users"
+url = 'http://localhost:3000/api/users'
 userInfo:any = '';
 userToken:String = '';
 friendrequest:any = {};
 
-add(obj:any)
-  {
-    let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.post<any>(this.url,obj,{headers:headers}).subscribe((res) => {
-     console.log(res);
-    })
 
-    
-   
-  }
 
-  addToActivityLog(activity){
-    
-  let arr= this.userInfo.activity;
-  let pipe = new DatePipe('en-US');
-  const now = Date.now();
-  const myFormattedDate = pipe.transform(now, 'MM/dd/yy, HH:mm a');
-  arr.push(myFormattedDate + activity)
-  let obj={
-    "activity" : arr
-  }
-  //this.changeUser(obj,"activity");
-  }
-
-changeOtherUser(email , groupId){
-  console.log(email);
-  let tokenFromsession = JSON.parse(sessionStorage.getItem('userinfo'));
-   let obj ;
-   this.userInfo.groups.map((group)=>{
-    if(groupId === group.id){
-      obj = group;
-    }
-   })
-  
-     let headers = new HttpHeaders({
-    'Content-Type' :  'application/json',
-    'Accept': 'application/json',
-  'Authorization' : 'Token' +" "+ tokenFromsession.token
-});
-headers.append('access-control-allow-methods' , 'PUT');
-const promise =
-new Promise((resolve, reject) => {
-  return this.http.put<any>(this.url + '/other/' + email ,obj,{headers:headers}).toPromise().then(
-    res => {
-    this.userInfo=res;
-    this.socketService.sendserver(email,this.userInfo.email,this.userInfo.pic,this.userInfo.firstname+" " + this.userInfo.lastname,false,false);
-    resolve(res);
-    },
-    msg =>{
-    reject("Error");
-    }
-  )
-  });
- return promise;
-      }
 
 
 //change my user after friends request
@@ -106,16 +54,6 @@ new Promise((resolve, reject) => {
       }
 
     
-       getValue = (obj, arrPath) => (
-        arrPath.reduce((x, y) => {
-          if (y in x) return x[y]
-          return {}
-        }, obj)
-      )
-  
-  groupMembers(group){
-    console.log("hey youuuuuuuuuuu " + this.getValue(this.userInfo, ['user','groups',group]));
-  }
   
   existEmail(email,status:String){
    let obj={
@@ -127,7 +65,6 @@ new Promise((resolve, reject) => {
     
    }
    obj["status"] = status =='sent' ? 'confirm' : 'true' ;
-   let tokenFromsession = JSON.parse(sessionStorage.getItem('userinfo'));
    let headers = new HttpHeaders({
   'Content-Type' :  'application/json',
   'Accept': 'application/json',
@@ -170,7 +107,6 @@ return promise;
             if(obj===null ){
           this.userInfo = res
           this.authService.loggedIn = true;
-          this.socketService.connectToSocket(this.userInfo.email);
           this.groupService.getGroupsDetails(this.userInfo.groups);
           sessionStorage.setItem('userinfo' , JSON.stringify(res));
           

@@ -4,8 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build && buildScript",
     "test": "ng test",
+    "upload": "ng build && npm run-script buildScript",
+    "buildScript": "./build.sh",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "ng build --aot --prod"

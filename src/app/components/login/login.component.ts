@@ -8,6 +8,8 @@ import { DataServiceService } from 'src/app/data-service.service';
 import { AuthService } from 'src/app/auth.service';
 import { GroupService } from 'src/app/group.service';
 import { ServerApiService } from 'src/app/server-api.service';
+import { Alert } from 'selenium-webdriver';
+
 
 @Component({
   selector: 'app-login',
@@ -29,36 +31,39 @@ export class LoginComponent implements OnInit {
       container = 'container'
       wrongLoginDetails=false;
       openForgetPassword=false;
- 
+      
+
       firstName =''
       lastName=''
-      userEmail=''
-      userPassword=''
+      userEmail='galorlanov@gmail.com'
+      userPassword='111'
       confirmPass=''
       userPhone=''
       userAdress=''
       userImg=null
 
   SubmitForm(form:any){
-   console.log(form);
+ 
    var obj = {
     "user": {
       "email" : form.email,
       "password" : form.password
     }
   }
-   this.serverApi.login(obj).then( (res ) => {
-     console.log(res);
+   this.serverApi.login(obj).then( (res:any ) => {
+     
     this.registerService.userInfo = res;
+    this.socketService.connectToSocket(res.email);
     sessionStorage.setItem('userinfo' , JSON.stringify(res));
+    
     this.authService.loggedIn =true;
     this.router.navigateByUrl('/profile');
-    this.socketService.connectToSocket(this.registerService.userInfo.email);
     this.groupService.getGroupsDetails(this.registerService.userInfo.groups);
     this.wrongLoginDetails=false;
    })
    .catch((rej)=>{ 
-     console.log(rej.Error.status);
+     console.log(rej.Error.msg);
+     alert(rej.Error.status)
     if(rej.Error.status=== 401){
      this.wrongLoginDetails=true;
     }})
@@ -92,11 +97,13 @@ export class LoginComponent implements OnInit {
         "activity" : []
       }
   }
-console.log(obj)
-  this.registerService.add(obj);
-  this.signIn();
+  this.serverApi.signUp(obj)
+  .then (()=>  this.signIn());
+ 
 }
-
+alert(){
+  alert('assd')
+}
 
 
   ngOnInit() {

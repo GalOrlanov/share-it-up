@@ -1,4 +1,4 @@
-import { Component,ChangeDetectionStrategy ,OnInit} from '@angular/core';
+import { Component,HostListener ,OnInit} from '@angular/core';
 import  { RegisterService } from './register.service';
 import { Router } from '@angular/router';
 import { DataServiceService } from './data-service.service';
@@ -6,6 +6,8 @@ import { SocketService } from './socket.service';
 import { Subscription, timer } from 'rxjs';
 import { timeInterval } from 'rxjs/operators';
 import { GroupService } from './group.service';
+
+
 
 @Component({
   selector: 'app-root',
@@ -19,6 +21,7 @@ export class AppComponent {
   sub: Subscription;
   showMsg=false;
   msgContent='';
+  friendImg= '';
 
   constructor(private groupService:GroupService,  public registerService:RegisterService,private router:Router, public dataService:DataServiceService, private socketService:SocketService){
     this.sub = this.socketService.getQuotes()
@@ -27,38 +30,22 @@ export class AppComponent {
      
       this.stockQuote = quote;
       console.log(quote);
-      this.registerService.getMyFriends();
       this.showMsg=true;
       setTimeout(()=>{
         this.showMsg=false;
-      },8000)
-      if(this.stockQuote.status === 'deleteFromGroup'){
-        this.msgContent= 'delete you from group!'
-      }
-     if(this.stockQuote.confirm){
-       this.msgContent = 'Confirm You Friend Request!';
-       this.stockQuote.sent = false;
-     }
-     else if(this.stockQuote.sent){
-       this.msgContent = 'Sent You A Friend request!'
-     }
-      if (this.stockQuote.delete===true){
-        this.msgContent='Unfriend You! :( '
-        var friendsArr=[];
-        this.registerService.userInfo.friends.map((friend,index)=>{
-            if(friend.email === this.stockQuote.from){
-              
-            }
-            else{
-              friendsArr.push(friend)
-            }
-        })
-        this.registerService.changeUser({"friends" : friendsArr} , "friends");
-        this.registerService.getMyFriends();
-      }
 
-   });
-  }
+      },8000)   
+      this.msgContent = quote.msg;
+      this.friendImg = quote.img;
+        this.registerService.getMyFriends();
+      })
+
+    }
+
+    @HostListener('window:unload', [ '$event' ])
+    unloadHandler(event) {
+      this.socketService.disconectFromSocket(this.registerService.userInfo.email);
+    }
   
   title = 'Share it';
   show=false;

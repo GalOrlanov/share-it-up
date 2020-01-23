@@ -14,11 +14,11 @@
     padding: 10px;
     position: absolute;
     min-width: 200px;
-    
+    margin-left: -80px;
     min-height: 100px;
     z-index: 99999;
     top: 125%;
-    left: 44%;
+    left: 0;
     opacity: 1;
     transition: opacity 0.3s;
   }
@@ -27,8 +27,7 @@
     content: "";
     position: absolute;
     bottom: 100%;
-  
-    left: 40%;
+    left: 50%;
     margin-left: -15px;
     height: 5px;
     border-width: 12px;

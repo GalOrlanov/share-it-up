@@ -14,7 +14,7 @@ export class NotificationComponent implements OnInit {
 
 
 
-  @Input() friend:any;
+  @Input() img:any;
   @Input() msg:any;
 
   ngOnInit() {

@@ -28,7 +28,7 @@
 }
   .groupandfriends{
       margin-left:10%;
-       text-align: center;
+      text-align: center;
       margin-right: 5%;
   }
   
@@ -58,10 +58,75 @@ justify-content: space-between;
  }
 .friend-box{
 	display: flex;
-	margin-top: -10px;
+    margin-top: -10px;
 	margin-left: 15px;
 }
-
+    @media only screen and (max-width: 600px) {
+        
+/* For mobile phones: */
+   .groupFriendsBox{
+    width : 100%;
+    }
+    .box{
+       display: none;
+    }
+     .profile-image{
+         width: 100px;
+         height: 100px;
+     
+     
+     }
+     .profile-image-wrapper{
+        display: table;
+        width: 90%;
+        margin-top: 90px;
+        text-align: center;
+        margin-left: 5%;
+     }
+     .Name{
+         font-size: 20px;
+     }
+     .group-and-friends-wrapper{
+         display: none;
+         margin-left: 0;
+         width: 90%;
+         text-align: center;
+      
+        
+     }
+     .groupandfriends{
+      margin-left: 0 !important;
+     }
+     .details-item{
+         font-size: 15px !important;
+         
+     }
+     .topic-details{
+       
+         width: 100% !important;
+     }
+     .details-div{
+         width: 100%;
+         text-align: start;
+     }
+  .none-mobile{
+      display: none !important;
+  }
+  .space{
+      margin-right: 60px;
+      margin-left: 35px !important;
+      
+  }
+  .details-title{
+      font-size: 16px;
+      font-weight: 600;
+  }
+.details-number{
+    color: grey;
+    font-size: 14px !important;
+}
+    }
+     
 .settle-box{
 	margin-top: -10px;
     margin-left: 5%;
@@ -81,22 +146,7 @@ justify-content: space-between;
  }
 
 
-.groups-and-friends{
-    height: 55%;
-    width: 32%;
-    position: absolute;
-    margin: 3%;
-    margin-left: 65%;
-    background-color: white;
-    text-align: left;
-}
 
-.personal-details-title{
-margin: 3%;
-
-font-style: oblique;
-font-weight: 700;
-}
 .topic-details{
 margin-top: 3%;
 margin-left: 3%;

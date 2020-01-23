@@ -1,6 +1,5 @@
 .friends-wrapper{
   margin-left: 15%;
-  
 }
 
 .example-small-box, .example-large-box {
@@ -8,6 +7,9 @@
     margin: 16px;
     padding: 16px;
     border-radius: 8px;
+    max-width: 60%;
+     display: flow-root;
+      padding: 0px !important;
   }
   
   
@@ -117,4 +119,29 @@ p {
 }
 .icon-color:hover{
    color: rgb(255,255,255);
+}
+
+@media only screen and (max-width: 600px) {
+.example-large-box{
+    width: 100% !important;
+}
+
+.friends{
+    width: 100% !important;
+    margin-left: 0px !important;
+
+}
+.friends-wrapper{
+    margin-left: 5% !important;
+    width: 90% !important;
+    margin-top: 90px;
+}
+.box{
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0px !important;
+    left : 0px !important;
+}
+
+
 }

@@ -16,6 +16,7 @@ export class StatsService {
  * @returns array with all friends owes
  */
   dataForTable(itemsArray){
+    console.log(itemsArray)
     let memberArr = [];
     this.registerService.userInfo.friends.map((groupMember)=>{
      memberArr.push({name: groupMember.firstname +" " + groupMember.lastname , email: groupMember.email , oweMe: 0 , youOwe: 0 });
@@ -38,7 +39,7 @@ export class StatsService {
      }
      })
    })
- 
+ console.log(memberArr)
    return memberArr;
   }
 
@@ -66,7 +67,6 @@ export class StatsService {
        this.dataForTable(group);
     }
 
-  
   }
 
 }

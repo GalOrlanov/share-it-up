@@ -38,7 +38,7 @@
 		<form #form="ngForm" (ngSubmit)="SubmitForm(form.value)">
 			<h1>Sign in</h1>
 			<div class="social-container">
-				<a href='https://share-it-server.herokuapp.com/auth/facebook' class="social"><i class="fab fa-facebook-f" ></i></a>
+				<a href='http://localhost:3000/auth/facebook' class="social"><i class="fab fa-facebook-f" ></i></a>
 				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
 				<a href="#" class="social"><i class="fab fa-twitter"></i></a>
 			</div>
@@ -54,7 +54,7 @@
 			</button>
 
 			<span *ngIf='wrongLoginDetails' style='color:red; ' >Wrong Username or Password</span>
-			<button type="submit">Sign In</button>
+			<button class="input-checkbox"  value="submit" >Sign In</button>
 		</form>
 	</div>
 	<div class="overlay-container">
@@ -72,4 +72,23 @@
 		</div>
 	</div>
 	
+</div>
+
+
+
+<div class='mobile-login'>
+
+	<h1 >Login</h1>
+	<div>
+		
+					<textarea [(ngModel)]='userEmail' matInput placeholder="Email"  ></textarea>
+	
+		  </div>
+		  <div>
+						<textarea [(ngModel)]='userPassword' style='color: black !important' dmatInput value='111' placeholder="Password"></textarea>
+		  </div>
+			
+		 
+
+   <button (click)='SubmitForm({email : userEmail , password: userPassword }) 'type="button"  class='mobile-submit' >Login</button>
 </div>

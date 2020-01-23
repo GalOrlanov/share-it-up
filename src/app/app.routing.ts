@@ -22,10 +22,10 @@ class appRouting {
 export const AppRoutes: any = [
     { path: "", component: LoginComponent },
     { path: "register", component: RegisterComponent},
-    { path: "friends", component: FriendsComponent,canActivate: [AuthGuard]},
+    { path: "friends", component: FriendsComponent},
     { path: "login", component:LoginComponent },
     { path: "profile", component: ProfileComponent},
-    { path: "group", component: GroupComponent,canActivate: [AuthGuard] },
+    { path: "group", component: GroupComponent},
     { path: "graphs", component: GraphsComponent,canActivate: [AuthGuard] },
     {path: "debug",component: DebugComponent}
     
@@ -35,4 +35,5 @@ export const AppRoutes: any = [
 export const AppComponents: any = [
     RegisterComponent,
     LoginComponent,
+    ProfileComponent
 ];

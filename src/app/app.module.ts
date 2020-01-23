@@ -51,6 +51,8 @@ import { DebugComponent } from './debug/debug.component';
 import { AppBarComponent } from './app-bar/app-bar.component';
 import { FriendCardComponent } from './friend-card/friend-card.component';
 import { SettleUpCardComponent } from './settle-up-card/settle-up-card.component';
+import { MobileDrawerComponent } from './mobile-drawer/mobile-drawer.component';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -82,7 +84,8 @@ import { SettleUpCardComponent } from './settle-up-card/settle-up-card.component
     DebugComponent,
     AppBarComponent,
     FriendCardComponent,
-    SettleUpCardComponent
+    SettleUpCardComponent,
+    MobileDrawerComponent
     
   ],
   imports: [
@@ -92,6 +95,7 @@ import { SettleUpCardComponent } from './settle-up-card/settle-up-card.component
     BrowserModule,
     MatSelectModule,
     Ng5SliderModule,
+    MatInputModule,
     MatRadioModule,
     FormsModule,
     HttpClientModule,

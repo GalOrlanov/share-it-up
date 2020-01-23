@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "downlevelIteration": true,
-    "outDir": "./dist/client",
+    "outDir": "./build",
     "sourceMap": true,
     "declaration": false,
     "module": "esnext",

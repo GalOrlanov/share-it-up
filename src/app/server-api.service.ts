@@ -9,8 +9,8 @@ export class ServerApiService {
   constructor(private http:HttpClient) { }
 
 
- url = "http://share-it-server.herokuapp.com"
-//url = "https://localhost:3000"
+ //url = "http://share-it-server.herokuapp.com"
+url = "http://192.168.1.9:3000"
 
 
 interactWithServer(requestType , obj , url , token){
@@ -19,12 +19,11 @@ interactWithServer(requestType , obj , url , token){
   let headers = new HttpHeaders({
      'Content-Type' :  'application/json',
      'Accept': 'application/json',
-    'X-Requested-With': 'XMLHttpRequest',
-
+     'X-Requested-With' : 'XMLHttpRequest',
+    'Authorization' :   token ? 'Token ' + tokenFromsession.token  : ''
+    
 });
-if(token){
-  headers['Authorization'] =  'Token' +" "+ tokenFromsession.token;
-}
+
 
   switch(requestType){
    case "POST" : 
@@ -85,6 +84,30 @@ getAllItems(groupArr){
   let url = `${this.url}/items/allitems`
   return this.interactWithServer("POST" , groupArr , url , true);
 }
+
+
+/*******************   Friends  ******************/
+/**
+ * 
+ * @param obj {friendEmail : 'friend email ' , userEmail : 'my email'}
+ * @example {friendEmail : 'friend email ' , userEmail : 'my email'}
+ */
+
+sendFriendRequest(obj){
+let url = `${this.url}/api/users/friends/sendfriendrequest`
+return this.interactWithServer("POST" ,obj , url , true )
+}
+
+
+confirmFriendRequest(obj){
+  let url = `${this.url}/api/users/friends/confirmrequest`
+return this.interactWithServer("POST" ,obj , url , true )
+}
+
+deleteFriend(obj){
+  let url = `${this.url}/api/users/friends/deletefriend`
+  return this.interactWithServer("DELETE" ,obj , url , true )
+  }
 
 
 }
