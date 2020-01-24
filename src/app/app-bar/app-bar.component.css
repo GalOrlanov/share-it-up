@@ -3,18 +3,20 @@
     background-color: #ffffff;
     position: fixed;
     color: black;
-    top: 15%;
+    top: 5%;
     left:5%;
     height: 70px;
     width: 90%;
   }
+
 
   .selected-btn{
     font-size: 18px;
     
   }
   .navbar-brand{
-    size: 30px;
+  height: 100px;
+  width: 10%;
   }
 
   .tab-btn{
@@ -24,6 +26,11 @@
     border: 1px rgba(0,0,0,0) solid;
     border-right-color: grey;
     padding-right: 20px;
+    font-family: "Raleway", sans-serif;
+  }
+  .tab-btn:hover{
+    background-color:rgba(221, 223, 223, 0.54);
+
   }
   
   .last-btn{

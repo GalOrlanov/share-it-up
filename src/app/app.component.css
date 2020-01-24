@@ -9,10 +9,10 @@
 }
 
 .app-background{
-  background-color: rgba(162, 211, 192,0.93);
+  background-color:#ffff;
   width:90%;
   margin-left: 5%;
-  margin-top:calc(10% + 65px);
+  margin-top:calc(5% + 65px);
   overflow: auto;
   height: 80%;
 }
@@ -21,6 +21,6 @@
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background-color: #6F6969;
+  background-color:#DEDFDF;
   align-items: center;
 }

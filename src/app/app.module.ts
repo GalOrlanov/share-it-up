@@ -52,6 +52,7 @@ import { AppBarComponent } from './app-bar/app-bar.component';
 import { FriendCardComponent } from './friend-card/friend-card.component';
 import { SettleUpCardComponent } from './settle-up-card/settle-up-card.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StartPageComponent } from './start-page/start-page.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     DebugComponent,
     AppBarComponent,
     FriendCardComponent,
-    SettleUpCardComponent
+    SettleUpCardComponent,
+    StartPageComponent
     
   ],
   imports: [

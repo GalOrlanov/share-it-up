@@ -1,14 +1,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
                 <nav class=" navbar-expand-lg navbar nav-bar">
-                            <a class="navbar-brand" href="#">
-                              <img src='../assets/images/logo2.png'alt="">
-                            </a>
+                              <img class="navbar-brand" src='../assets/images/logo_new.png'alt="">
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                                   <span class="navbar-toggler-icon"></span>
                                 </button>
                                 <div class="collapse navbar-collapse" id="navbarText">
                                   <ul class="navbar-nav mr-auto">
+                                      <li class="nav-item active">
+                                          <button (click)="openAbout()"  class="tab-btn" [ngClass]="{'selected-btn': selected==='about'}">About</button>
+                                         </li>
                                     <li class="nav-item active">
                                      <button (click)="openProfile()"  class="tab-btn" [ngClass]="{'selected-btn': selected==='profile'}">My Profile</button>
                                     </li>

@@ -28,6 +28,10 @@ export class AppBarComponent implements OnInit {
     this.selected='profile';
     this.registerService.userInfo ? this.router.navigateByUrl('/profile') : this.router.navigateByUrl('/login') 
   }
+  openAbout(){
+    this.selected='about';
+    this.registerService.userInfo ? this.router.navigateByUrl('') : this.router.navigateByUrl('') 
+  }
   
   openGroups(){
     this.selected='groups';
