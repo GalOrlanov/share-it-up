@@ -9,7 +9,8 @@ import { promise } from 'protractor';
   providedIn: 'root'
 })
 export class UsersService {
-url:string = 'https://share-it-server.herokuapp.com';
+//url:string = 'https://share-it-server.herokuapp.com';
+url = 'http://192.168.1.9:3000'
 name:any='';
 users:Array<any>=[];
 allItems=[]
@@ -33,34 +34,10 @@ getItemList(groupId){
 });
   return this.http.get<any>(this.url + "/items/" + groupId,{ headers : headers})
   .subscribe(data => {
-    let current = 13;
-     data.map((item)=>{
-      if(!item.memberSchema){
-        if(item.buyerEmail === this.registerService.userInfo.email){
-          item.split.map((member)=>{
-            if(member[0] === this.registerService.userInfo.email){
-              this.oweMe+=member[1] 
-            }
-          })
-        }
-       
-        this.totalForGroup+=item.price;
-    if(parseInt(item.date.substring(5,7)) < current ) {
-      current=parseInt(item.date.substring(5,7));
-      item.newDate= true;
-     }
-    }
-    })
-    console.log(data)
     this.users=data;
-    this.users.map((item,index)=>{
-      if(item.memberSchema){
-        this.users.splice(index,1);
-      }
-    })
     this.dataService.showOrHideSpinner=false;
 });
-   
+
 }
 
 addItem(obj):any{

@@ -97,7 +97,6 @@ import {MatInputModule} from '@angular/material/input';
     Ng5SliderModule,
     MatInputModule,
     MatRadioModule,
-    ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
     RouterModule,

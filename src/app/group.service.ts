@@ -39,43 +39,12 @@ export class GroupService {
    return promise;
         }
 
-
-  getGroupMembers(groupId){
-    console.log(groupId);
-    if(!groupId){
-      return;
-    }
-    let tokenFromsession = JSON.parse(sessionStorage.getItem('userinfo'));
-  
-    let headers = new HttpHeaders({
-      'Content-Type' :  'application/json',
-      'Accept': 'application/json',
-    'Authorization' : 'Token' +" "+ tokenFromsession.token
-  });
-  
-  const promise =
-  new Promise((resolve, reject) => {
-    return this.http.get<any>('https://share-it-server.herokuapp.com/api/users/group/members/' + groupId ,  {headers:headers}).toPromise().then(
-      res => {
-        console.log(res)
-    this.dataService.groupMembers = res;
-      resolve(res);
-      },
-      msg =>{
-      reject("Error");
-      }
-    )
-    });
-    return promise;
-        }
-
         setGroupDetails(groupId,groupName,groupImage){
           let obj={
             groupId,
             details: {
               groupName,
               groupImage,
-             
             }
           }
           let tokenFromsession = JSON.parse(sessionStorage.getItem('userinfo'));

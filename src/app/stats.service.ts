@@ -18,6 +18,9 @@ export class StatsService {
   dataForTable(itemsArray){
     console.log(itemsArray)
     let memberArr = [];
+    
+
+    
     this.registerService.userInfo.friends.map((groupMember)=>{
      memberArr.push({name: groupMember.firstname +" " + groupMember.lastname , email: groupMember.email , oweMe: 0 , youOwe: 0 });
     })

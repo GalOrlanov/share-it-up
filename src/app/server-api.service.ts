@@ -10,7 +10,8 @@ export class ServerApiService {
 
 
  //url = "http://share-it-server.herokuapp.com"
-url = "http://192.168.1.9:3000"
+//url = "http://192.168.1.9:3000"
+url = "http://10.0.0.15:3000"
 
 
 interactWithServer(requestType , obj , url , token){
@@ -84,7 +85,15 @@ getAllItems(groupArr){
   let url = `${this.url}/items/allitems`
   return this.interactWithServer("POST" , groupArr , url , true);
 }
+getGroupMembers(groupId){
+  let url = `${this.url}/api/users/group/members/${groupId}`
+  return this.interactWithServer("GET" , null, url, true);
+}
 
+getGroupsDetails(groupsArray){
+  let url = `${this.url}/api/users/group/details`;
+  return this.interactWithServer("POST" , { groupsArray} , url , true)
+}
 
 /*******************   Friends  ******************/
 /**
@@ -98,7 +107,6 @@ let url = `${this.url}/api/users/friends/sendfriendrequest`
 return this.interactWithServer("POST" ,obj , url , true )
 }
 
-
 confirmFriendRequest(obj){
   let url = `${this.url}/api/users/friends/confirmrequest`
 return this.interactWithServer("POST" ,obj , url , true )
@@ -107,6 +115,13 @@ return this.interactWithServer("POST" ,obj , url , true )
 deleteFriend(obj){
   let url = `${this.url}/api/users/friends/deletefriend`
   return this.interactWithServer("DELETE" ,obj , url , true )
+  }
+
+
+  /******************** Items  ***********************/
+  getItems(groupId){
+   let url = `${this.url}/items/${groupId}`
+   return this.interactWithServer("GET",null,url,true)
   }
 
 

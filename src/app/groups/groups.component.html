@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <div class="groups-wrapper">
 
-<div  class="group-content-div" *ngFor="let group of this.dataService.groupList">
+<div  class="group-content-div" *ngFor="let group of groupsList">
     <div class="group-wrapper"  (click)="openCurrentGroup(group[0])" >
 <img class="friendscard-image {{wiggle}}"  *ngIf='group[0].details.groupImage' then src={{group[0].details.groupImage}} />
 <img class="friendscard-image {{wiggle}}" *ngIf='!group[0].details.groupImage'  src="../../../assets/images/group.png"  />

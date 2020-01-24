@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input ,Output, EventEmitter } from '@angular/core';
 import {RegisterService} from '../register.service';
 import {DataServiceService} from '../data-service.service'
 import { UsersService } from '../users.service';
@@ -12,33 +12,25 @@ import { ServerApiService } from '../server-api.service';
   styleUrls: ['./groups.component.css']
 })
 export class GroupsComponent implements OnInit {
-
+@Output() groupListener: EventEmitter<Object> = new EventEmitter();
   wiggle='';
   deleteGroup=false;
+  groupsList:any = [];
+
   constructor(public registerService:RegisterService ,
      public dataService:DataServiceService,
      public userService: UsersService,
-     private billsService: BillsService,
      private groupService:GroupService,
      public serverApi:ServerApiService) { }
      
-     groupName= '';
-     groupImage= '';
 
 
  openCurrentGroup(group){
-   
-   console.log(group);
-  this.dataService.groupName =group.details.groupName;
-  this.dataService.groupImage = group.details.groupImage;
-  this.dataService.groupId=group.details.groupId;
-  this.groupService.getGroupMembers(group.details.groupId);
-  this.userService.getItemList(this.dataService.groupId);
+   this.groupListener.emit(group)
 
  if(this.deleteGroup){
   this.groupService.deleteGroup(this.dataService.groupId).then((res) =>{
 this.registerService.userInfo.groups = res;
-console.log(res);
 this.groupService.getGroupsDetails(res);
   });
   this.deleteGroup=false;
@@ -52,6 +44,7 @@ else{
 
  }
 
+
  openDeleteGroup(){
    this.wiggle === '' ? this.wiggle = 'wiggle' : this.wiggle= '';
    this.deleteGroup=true;
@@ -63,8 +56,11 @@ else{
     this.dataService.showAddGroup=!this.dataService.showAddGroup;
   }
   ngOnInit() {
-    if(this.dataService.groupList.length > 0)
-    this.openCurrentGroup(this.dataService.groupList[0][0])
+    if(this.dataService.groupList.length > 0){
+    //this.openCurrentGroup(this.dataService.groupList[0][0])
+    }
+    this.serverApi.getGroupsDetails(this.registerService.userInfo.groups)
+    .then(res => this.groupsList=res)
   }
 
 }

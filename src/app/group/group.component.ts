@@ -5,6 +5,7 @@ import { UsersService } from '../users.service';
 import { GroupService } from '../group.service';
 import { SocketService } from '../socket.service';
 import { StatsService } from '../stats.service';
+import { ServerApiService } from '../server-api.service';
 @Component({
   selector: 'app-group',
   templateUrl: './group.component.html',
@@ -18,14 +19,19 @@ export class GroupComponent implements OnInit {
     private renderer:Renderer2,
     private groupService: GroupService,
     private socketSerive:SocketService,
-    private statsService:StatsService) { }
+    private statsService:StatsService,
+    private serverApi:ServerApiService) {
+      this.serverApi.getItems(this.dataService.groupId).then(res=> console.log(res))
+     }
 
 
-   itemsList = [];
+
+
+
+   groupItems:any = [];
    groupMembers:any = [];
-   groupImage:any;
-   groupName:any;
-  showHideDeleteBtn=false;
+   groupDetails:any = {groupImage:'' , groupName: '' , groupId:''};
+   showHideDeleteBtn=false;
    AddItem=false;
    isHover=false;
    selectedFriend= 2;
@@ -35,7 +41,34 @@ export class GroupComponent implements OnInit {
    shortcutMonthsHeaders = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
  
   
+changeGroup(group){
+  if(!group || group === {}) return;
+  let groupId = group.details.groupId;
 
+this.groupDetails = group.details;
+
+console.log(this.groupDetails)
+this.getItems(groupId);
+this.getGroupMembers(groupId);
+}
+
+getItems(groupId){
+this.serverApi.getItems(groupId)
+.then(res =>{
+  
+  this.groupItems = res
+  this.getGroupOwes()
+})
+}
+
+getGroupMembers(groupId){
+this.serverApi.getGroupMembers(groupId)
+.then(res=> this.groupMembers = res)
+}
+
+getGroupOwes(){
+  console.log(this.statsService.dataForTable(this.groupItems))
+}
 
    openAddItem(){
      this.dataService.hideOrShowAddItem = !this.dataService.hideOrShowAddItem;
@@ -59,7 +92,7 @@ export class GroupComponent implements OnInit {
     this.menuOpen=false;
     this.groupService.deleteMemberFromGroup(groupId,email).then(()=>{
       this.socketSerive.sendserver(email,this.registerService.userInfo.email,this.registerService.userInfo.pic,this.registerService.userInfo.firstname +' '+this.registerService.userInfo.lastname,false,'deleteFromGroup')
-      this.groupService.getGroupMembers(groupId);
+      this.serverApi.getGroupMembers(groupId);
     })
    }
     deleteItem(item){
@@ -93,15 +126,9 @@ return (this.selectedFriend === index)
 }
 
 
-  ngOnInit() {
-    if(this.dataService.groupId){
-    this.groupService.getGroupMembers(this.dataService.groupId).then(()=>{
-     this.findMeInMembers();
-     console.log(this.statsService.dataForTable(this.userService.users))
-    })
-   }
 
- 
+
+  ngOnInit() {
    
   }
 }

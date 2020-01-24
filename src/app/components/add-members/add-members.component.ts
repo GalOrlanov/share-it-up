@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {RegisterService} from '../../register.service'
 import {DataServiceService } from '../../data-service.service'
 import { GroupService } from 'src/app/group.service';
+import { ServerApiService } from 'src/app/server-api.service';
 
 @Component({
   selector: 'app-add-members',
@@ -10,7 +11,7 @@ import { GroupService } from 'src/app/group.service';
 })
 export class AddMembersComponent implements OnInit {
 
-  constructor(private groupService:GroupService, public registerService:RegisterService , public dataService:DataServiceService) { }
+  constructor(private groupService:GroupService,private serverApi:ServerApiService, public registerService:RegisterService , public dataService:DataServiceService) { }
   searchStr = '';
   friendsList= [];
 @Input('newUser')  isNewUser:boolean;
@@ -41,7 +42,7 @@ export class AddMembersComponent implements OnInit {
       console.log(arr)
  
      this.groupService.addMemberToGroup(this.dataService.groupId,friend).then(()=>{
-      this.groupService.getGroupMembers(this.dataService.groupId);
+      this.serverApi.getGroupMembers(this.dataService.groupId);
       this.dataService.showAddMember=false;
      })
 

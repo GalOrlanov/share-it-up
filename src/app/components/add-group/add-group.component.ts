@@ -81,7 +81,7 @@ closeAddGroup(){
    this.groupService.setGroupDetails(this.group.id,this.group.name,this.group.pic).then((response)=>{
    this.registerService.userInfo.groups.push(this.group.id)
          this.groupService.getGroupsDetails(this.registerService.userInfo.groups);
-         this.groupService.getGroupMembers(this.group.id);
+         this.serverApi.getGroupMembers(this.group.id);
          this.dataService.showAddGroup=false;
          this.dataService.groupImage=null;
     })
