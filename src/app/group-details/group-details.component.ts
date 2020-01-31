@@ -10,8 +10,8 @@ export class GroupDetailsComponent implements OnInit {
 
   constructor(public dataService:DataServiceService) { }
 @Input() totalMembers:any;
-@Input() totalPrice:any;
-@Input() myOwe:any;
+@Input() youOwe:any;
+@Input() oweMe:any;
 
   
 

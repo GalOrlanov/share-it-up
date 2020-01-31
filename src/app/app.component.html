@@ -4,13 +4,17 @@
 
 
 <div class="viewsRender">
+       
     <img hidden class='logo' src='../assets/images/newLogo.png'>
     <app-app-bar></app-app-bar>
     <div class='app-background'>
         <app-notification *ngIf='showMsg' [msg]='msgContent' [img]='friendImg'></app-notification>
-   
-        
-  <router-outlet></router-outlet>
+     
+        <div class='spinner'>
+                <app-spinner *ngIf=this.dataService.showOrHideSpinner ></app-spinner>
+               </div>
+  <router-outlet>
+  </router-outlet>
     </div>
 </div>
 

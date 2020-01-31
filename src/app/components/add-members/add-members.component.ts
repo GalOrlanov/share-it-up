@@ -16,7 +16,7 @@ export class AddMembersComponent implements OnInit {
   friendsList= [];
 @Input('newUser')  isNewUser:boolean;
 @Input() newGroup:boolean;
-
+@Input() groupId:string;
 
   asd(fr){
     this.friendsList.map((friend) => {
@@ -41,8 +41,8 @@ export class AddMembersComponent implements OnInit {
       })
       console.log(arr)
  
-     this.groupService.addMemberToGroup(this.dataService.groupId,friend).then(()=>{
-      this.serverApi.getGroupMembers(this.dataService.groupId);
+     this.groupService.addMemberToGroup(this.groupId,friend).then(()=>{
+      this.serverApi.getGroupMembers(this.groupId);
       this.dataService.showAddMember=false;
      })
 

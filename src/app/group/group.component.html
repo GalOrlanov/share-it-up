@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div *ngIf="this.dataService.addMembers" style="position: absolute; left: 40%; margin-top: 30%; margin-left: '-200px' ;">
-    <app-add-members  [newUser]="true" ></app-add-members>
+    <app-add-members [groupId]='groupDetails.groupId' [newUser]="true" ></app-add-members>
     </div>
 <div class="main-wrapper"> 
     <app-groups (groupListener)='changeGroup($event)' class='app-groups'></app-groups>
@@ -12,7 +12,7 @@
         <div class='details-wrapper'>
             <h1 class='group-name'> {{groupDetails.groupName}}</h1>
             <div class='group-details'>
-            <app-group-details    [totalPrice]='' [totalMembers]='' [myOwe]='' ></app-group-details>
+            <app-group-details    [youOwe]='youOwe' [totalMembers]='groupMembers.length' [oweMe]='oweMe' ></app-group-details>
             <div class='add-item-img' (click)="openAddItem()" > <i  style='font-size: 50px;margin-top:3px;'class="fas fa-plus"></i></div> 
             <div class='mobile-btns'>
              
@@ -28,7 +28,7 @@
        
 </div>
 
-<app-add-item *ngIf="this.dataService.hideOrShowAddItem" ></app-add-item>
+<app-add-item (afterAdded)='afterAddItem()' *ngIf="this.dataService.hideOrShowAddItem" [groupMembers]='groupMembers' [groupId]='groupDetails.groupId'></app-add-item>
 
 
 <div class='content-wrapper'>
@@ -84,7 +84,7 @@
 
     <dt *ngIf='item.newDate || groupItems.length===1 '  class="date-title">{{dateForTitle(item.date)}}  </dt>
 
-    <app-item-card  (mouseenter)='deleteItem(item._id)' (mouseleave)="deleteItem(item._id)" *ngIf='!item.bills' [id]='item._id' [hover]='isHover' [date]='dateForItem(item.date)' [split]='item.split' [image]='item.pic' [itemName]='item.item' [itemId]='item._id' [currency]='item.currency' [price]='item.price' [paidBy]='item.buyerName'></app-item-card>
+    <app-item-card (afterDelete)="afterDelete()" (mouseenter)='deleteItem(item._id)' (mouseleave)="deleteItem(item._id)" *ngIf='!item.bills' [groupId]='groupDetails.groupId' [id]='item._id' [hover]='isHover' [date]='dateForItem(item.date)' [split]='item.split' [image]='item.pic' [itemName]='item.item' [itemId]='item._id' [currency]='item.currency' [price]='item.price' [paidBy]='item.buyerName'></app-item-card>
 
 
 </div>

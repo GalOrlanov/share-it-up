@@ -81,7 +81,7 @@
 		</form>
   </div>
   
-  <app-split [itemPrice]='itemPrice' style='margin-right: 20px; top:10px;' *ngIf='showSplit === "true"'></app-split>
+  <app-split [groupMembers]='groupMembers'[itemPrice]='itemPrice' style='margin-right: 20px; top:10px;' *ngIf='showSplit === "true"'></app-split>
 </div>
 <br/>
 <input type="submit" class="btn btn-info add-btn" value="Add Item"/>

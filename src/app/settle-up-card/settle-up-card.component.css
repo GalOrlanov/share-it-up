@@ -1,15 +1,15 @@
 .card-wrapper{
-    min-width: 400px;
-    width: 95%;
+    
+    width: auto;
     height: 150px;
     position: relative;
     margin-top: 7px;
-
+    margin-right: 10px;
 }
 .card{
-    min-width: 350px;
+    min-width: 230px;
     height: 100%;
-    width: 95%;
+    width: auto;
     margin-left: 40px;
     border-radius: 20px;
     background-color: white;

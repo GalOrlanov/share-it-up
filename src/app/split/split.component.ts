@@ -14,6 +14,8 @@ import { DataServiceService } from '../data-service.service';
 
 export class SplitComponent implements OnInit {
   @Input() itemPrice:number;
+  @Input() groupMembers:any;
+
   constructor(public dataService:DataServiceService) { }
 
   memberLength = 3;
@@ -38,14 +40,14 @@ export class SplitComponent implements OnInit {
     this.totalPrice =this.itemPrice;
     this.totalleft=this.itemPrice;
     console.log(this.itemPrice)
-    this.dataService.groupMembers.map((member)=>{
-      this.membersArray.push([member.email, 0 , { maxLimit: this.totalleft , ceil: this.totalPrice} ,this.totalPrice,member.firstname+' '+member.lastname])
+    this.groupMembers.map((member)=>{
+      this.membersArray.push([member.email, 0 , { maxLimit: this.totalleft , ceil: this.totalPrice} ,this.totalPrice,member.firstname+' '+member.lastname , member.pic])
     })
     console.log(this.membersArray)
   }
   
   
-  a = ''; 
+ 
 asd(price,index){
   let total = 0;
   this.membersArray.map((member)=>{

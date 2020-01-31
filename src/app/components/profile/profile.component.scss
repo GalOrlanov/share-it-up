@@ -26,10 +26,9 @@
     text-align: left;
     display: flex;
 }
-  .groupandfriends{
-      margin-left:10%;
+  .groupandfriends{  
       text-align: center;
-      margin-right: 5%;
+      margin-right: 15%;
   }
   
 .wrap-content{
@@ -45,13 +44,13 @@ justify-content: space-between;
  }
 
 .groupFriendsBox{
-	width: 50%;
+	width: 42%;
 	height: 80%;
 	margin-right: 5%;
 }
  .box{
     background-color: white;
-	width: 45%;
+	width: 50%;
 	border-radius: 30px;
 	height: 80%;
 	margin-right: 5%;
@@ -59,7 +58,10 @@ justify-content: space-between;
 .friend-box{
 	display: flex;
     margin-top: -10px;
-	margin-left: 15px;
+    height: 220px;
+    margin-left: 15px;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
     @media only screen and (max-width: 600px) {
         
@@ -89,9 +91,10 @@ justify-content: space-between;
      .group-and-friends-wrapper{
          display: none;
          margin-left: 0;
-         width: 90%;
+         width: auto;
+         
          text-align: center;
-      
+        
         
      }
      .groupandfriends{
@@ -131,7 +134,8 @@ justify-content: space-between;
 	margin-top: -10px;
     margin-left: 5%;
     height: 300px;
-	overflow-y: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
  .small-box{
 	background-color: white;
@@ -141,16 +145,24 @@ justify-content: space-between;
 	
  }
 
- .group-and-friends-wrapper{
+ .group-det{
+     width: 50% !important;
+     position: relative;
      display: flex;
+     justify-items: space-between;
  }
 
+ .group-and-friends-wrapper{
+     display: flex;
+     width: auto;
+ }
 
 
 .topic-details{
 margin-top: 3%;
 margin-left: 3%;
 width: 60%;
+margin-right: 30px;
 }
 
 .details-item{

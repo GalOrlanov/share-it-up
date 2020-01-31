@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { formatNumber } from '@angular/common';
 import { UsersService } from '../users.service';
 import { DataServiceService } from '../data-service.service';
 import { RegisterService } from '../register.service';
 import { MembersComponent } from '../members/members.component';
 import { StatsService } from '../stats.service';
+import { ServerApiService } from '../server-api.service';
 
 @Component({
   selector: 'app-graphs',
@@ -13,35 +14,39 @@ import { StatsService } from '../stats.service';
 })
 export class GraphsComponent implements OnInit {
 
-  constructor(public userService:UsersService,public dataService:DataServiceService,public registerService:RegisterService,private statsServie:StatsService) { }
+  constructor(private serverApi:ServerApiService, public userService:UsersService,public dataService:DataServiceService,public registerService:RegisterService,private statsServie:StatsService) { }
    graphArr=[];
    tableArr=[];
-
-
-
-chart={
-  title: 'asdasdasd',
-  type: 'ColumnChart',
-  data:   [
+   _reload=true;
+    fromValue=null;
+    untilValue=null;
+    toppings = '';
+items=[]
+    data=   [
     
-    ['January', 0,],
-    ['February', 0],
-    ['March', 0],
-    ['April', 0],
-    ['May', 0],
-    ['June', 0],
-    ['July', 0],
-    ['August', 0],
-    ['September', 0],
-    ['October', 0],
-    ['November', 0],
-    ['December', 0],
-
-  ],
-  width: '90%',
-  columnNames:['sdf','Total'],
+      ['January', 0],
+      ['February', 0],
+      ['March', 0],
+      ['April', 0],
+      ['May', 0],
+      ['June', 0],
+      ['July', 0],
+      ['August', 0],
+      ['September', 0],
+      ['October', 0],
+      ['November', 0],
+      ['December', 0],
+  
+    ]
+chart={
+  title: 'My spents',
+  type: 'ColumnChart',
+  width: '100%',
+  columnNames:['',''],
   fontSize:'12px',
+  
   options:{
+    isStacked: true,
     is3D: true,
     animation: {
       startup: true,
@@ -75,52 +80,44 @@ chart={
   }
 
 }
-makeDataForGraph(){
-  if(this.userService.users === undefined){
-    return;
-  }
- this.userService.users.map((item)=>{
-   if(!item.bills)
-  this.chart.data[item.date.substring(5,7)-1][1] += item.price ;
+makeDataForGraph(itemsArray){
+ 
+ itemsArray.map((item)=>{
+  this.data[item.date.substring(5,7)-1][1] += item.price ;
  })
- console.log( this.chart.data);
+ console.log(this.data)
  }
 
-/*
- dataForTable(){
-   let memberArr = [];
-   this.dataService.groupMembers.map((groupMember)=>{
-    memberArr.push({name: groupMember.firstname +" " + groupMember.lastname , email: groupMember.email , oweMe: 0 , youOwe: 0 });
-   })
-  this.userService.users.map((item)=>{
-    item.split.map((splitArray)=>{
-    if(splitArray.email === this.registerService.userInfo.email){
-        memberArr.map((member)=>{
-          splitArray.oweMe.map((owe)=>{
-          if(member.email === owe.email){
-            member.oweMe += owe.owe === undefined ? 0 : owe.owe
-          }
-        })
-        splitArray.oweTo.map((owe)=>{
-          console.log(owe)
-          if(member.email === owe.email){
-            member.youOwe += owe.owe === undefined ? 0 : owe.owe
-          }
-        })
-     
-      })
-    
-    }
-    })
+onChange(){
+  if(this.fromValue && this.untilValue){
+  this.getDataFromServer()
+}
+}
+
+
+dateToString(date){
+return date.toDateString()
+}
+getDataFromServer(){
+  this.dataService.showOrHideSpinner = true;
+  this.serverApi.getChartDetails(this.registerService.userInfo.email,this.dateToString(this.fromValue),this.dateToString(this.untilValue)).then((res:any)=>{
+    this.items =res
+    this.data=res;
+    this.chart.columnNames = res[0];
+    this.chart.columnNames.unshift("My Bills")
+    this.data.splice(0,1)
+    this.reload()
+    this.dataService.showOrHideSpinner = false;
   })
+}
 
-  this.tableArr =memberArr;
- }
-*/
-
+private reload() {
+  setTimeout(() => this._reload = false);
+  setTimeout(() => this._reload = true);
+}
   ngOnInit() {
-  this.makeDataForGraph();
-  this.tableArr = this.statsServie.dataForTable(this.userService.users)
+   console.log(this.userService.subscribeToDataService())
+ 
   }
 
 }

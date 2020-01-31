@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input,EventEmitter,Output} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { UsersService } from '../users.service';
@@ -8,6 +8,7 @@ import { BillsService } from '../bills.service';
 import { CloudinaryService } from 'src/app/cloudinary.service';
 import currency from '../../assets/jsons/currency.json'
 import {CloudinaryOptions, CloudinaryUploader} from 'ng2-cloudinary'
+import { ServerApiService } from '../server-api.service';
 
 @Component({
   selector: 'app-add-item',
@@ -15,11 +16,14 @@ import {CloudinaryOptions, CloudinaryUploader} from 'ng2-cloudinary'
   styleUrls: ['./add-item.component.css']
 })
 export class AddItemComponent implements OnInit {
-
+  @Input() groupMembers:any;
+  @Input() groupId:string;
+  @Output() afterAdded: EventEmitter<any> = new EventEmitter();
   constructor(public userService:UsersService,
     public dataService:DataServiceService,
     public registerService: RegisterService,
-   public cloudinaryService:CloudinaryService) { }
+   public cloudinaryService:CloudinaryService,
+   private serverApi:ServerApiService) { }
 ddd='';
 cur='';
     showSplit='false';
@@ -80,7 +84,7 @@ let members= []
 let splitPrice = this.itemPrice / this.dataService.splitArray.length;
 this.dataService.splitArray.map((member)=>{
   let totalOwe = member[1] > splitPrice ? member[1] - splitPrice : 0; 
- members.push({name: member[4] ,groupMembers: this.dataService.groupMembers, email: member[0] , pay: member[1], totalOwe: totalOwe, totalPay: member[1] , oweMe: [], oweTo: []});
+ members.push({name: member[4]  ,email: member[0], image: member[5],  pay: member[1], totalOwe: totalOwe, totalPay: member[1] , oweMe: [], oweTo: []});
 })
 
 
@@ -131,19 +135,26 @@ return members;
 }
 
 
+
 SubmitForm(itemForm){
 localStorage.setItem('currency' , this.cur);
 var item = itemForm;
 item.price = this.itemPrice;
 item.date = this.addDate;
+console.log(new Date(this.addDate).getTime());
 item.pic= this.dataService.itemImage ? this.dataService.itemImage : '../../assets/images/itemTag.png' 
-item.group= this.dataService.groupId;
+item.group= this.groupId;
 item.split = this.splitOrganize();
 item.currency = this.cur.split(' - ')[0];
 item.buyerEmail=this.registerService.userInfo.email;
 item.buyerName = this.registerService.userInfo.firstname + " " + this.registerService.userInfo.lastname
-this.userService.addItem(item);
-this.dataService.hideOrShowAddItem=! this.dataService.hideOrShowAddItem;
+this.serverApi.addItem(item).then(res=>{
+  this.afterAdded.emit(res)
+  this.dataService.hideOrShowAddItem=! this.dataService.hideOrShowAddItem;
+})
+
+
+
 this.dataService.itemImage = '';
 
 }

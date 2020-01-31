@@ -16,14 +16,21 @@ export class StatsService {
  * @returns array with all friends owes
  */
   dataForTable(itemsArray){
-    console.log(itemsArray)
     let memberArr = [];
-    
+itemsArray.map((split) => {
+split.split.map(user => {
 
-    
-    this.registerService.userInfo.friends.map((groupMember)=>{
+  let isExist = memberArr.find((userArr) =>  userArr.email === user.email ) 
+if(!isExist){
+  memberArr.push({name: user.name , email: user.email , oweMe: 0 , youOwe: 0 });
+}
+}) 
+})
+
+
+    /*this.registerService.userInfo.friends.map((groupMember)=>{
      memberArr.push({name: groupMember.firstname +" " + groupMember.lastname , email: groupMember.email , oweMe: 0 , youOwe: 0 });
-    })
+    })*/
    itemsArray.map((item)=>{
      item.split.map((splitArray)=>{
      if(splitArray.email === this.registerService.userInfo.email){
@@ -42,7 +49,6 @@ export class StatsService {
      }
      })
    })
- console.log(memberArr)
    return memberArr;
   }
 
@@ -56,7 +62,6 @@ export class StatsService {
     return user.pic;
   }
  
-
   getMyOwes(groupId){
     let group =[];
     if(groupId==='all'){
@@ -69,7 +74,8 @@ export class StatsService {
        group = this.userService.users;
        this.dataForTable(group);
     }
-
+   
   }
+ 
 
 }

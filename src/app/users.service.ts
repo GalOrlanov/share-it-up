@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http'
-import { Observable } from 'rxjs';
 import { RegisterService } from './register.service';
 import { DataServiceService } from './data-service.service';
 import { BillsService } from './bills.service';
 import { promise } from 'protractor';
+
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,6 +20,7 @@ allItems=[]
 totalForGroup:any=0;
 oweMe:number= 0;
 myOwen:number=0;
+allData$: BehaviorSubject<any>;
 
 
 
@@ -32,12 +36,9 @@ getItemList(groupId){
     'Content-Type' :  'application/json',
   'Authorization' : 'Token' +" "+ tokenFromSession.token
 });
-  return this.http.get<any>(this.url + "/items/" + groupId,{ headers : headers})
-  .subscribe(data => {
-    this.users=data;
-    this.dataService.showOrHideSpinner=false;
-});
-
+  return this.http.get<any>(this.url + "/items/" + groupId +'/null/null',{ headers : headers}).subscribe((res)=>{
+    this.allData$.next(res);
+  })
 }
 
 addItem(obj):any{
@@ -50,8 +51,14 @@ addItem(obj):any{
   {headers : headers } )
   .subscribe((res : any[])=>{
   this.getItemList(obj.group);
-  });
+  })
 }
+
+subscribeToDataService(): any {
+  return  this.allData$.asObservable() 
+}
+
+
 
 deleteItem(group,id){
   let tokenFromSession = JSON.parse(sessionStorage.getItem('userinfo'));

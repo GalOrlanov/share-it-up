@@ -1,4 +1,4 @@
-import { Component, OnInit , OnChanges, OnDestroy,Renderer2} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import{RegisterService} from '../register.service';
 import { DataServiceService } from '../data-service.service'
 import { UsersService } from '../users.service';
@@ -16,16 +16,12 @@ export class GroupComponent implements OnInit {
   constructor(public registerService: RegisterService ,
     public dataService:DataServiceService,
     public userService: UsersService,
-    private renderer:Renderer2,
     private groupService: GroupService,
     private socketSerive:SocketService,
     private statsService:StatsService,
     private serverApi:ServerApiService) {
-      this.serverApi.getItems(this.dataService.groupId).then(res=> console.log(res))
+     
      }
-
-
-
 
 
    groupItems:any = [];
@@ -37,6 +33,8 @@ export class GroupComponent implements OnInit {
    selectedFriend= 2;
    menuOpen=true;
    isAdmin=false;
+   oweMe=0
+   youOwe=0
    monthsHeaders = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
    shortcutMonthsHeaders = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
  
@@ -44,7 +42,6 @@ export class GroupComponent implements OnInit {
 changeGroup(group){
   if(!group || group === {}) return;
   let groupId = group.details.groupId;
-
 this.groupDetails = group.details;
 
 console.log(this.groupDetails)
@@ -53,12 +50,21 @@ this.getGroupMembers(groupId);
 }
 
 getItems(groupId){
-this.serverApi.getItems(groupId)
+  this.dataService.showOrHideSpinner = true
+this.serverApi.getItems(groupId,null,null)
 .then(res =>{
-  
-  this.groupItems = res
-  this.getGroupOwes()
+  this.groupItems = res;
+  this.getGroupOwes();
+  this.dataService.showOrHideSpinner = false
 })
+}
+
+afterAddItem(){
+  this.getItems(this.groupDetails.groupId)
+}
+
+afterDelete(){
+  this.getItems(this.groupDetails.groupId)
 }
 
 getGroupMembers(groupId){
@@ -67,7 +73,14 @@ this.serverApi.getGroupMembers(groupId)
 }
 
 getGroupOwes(){
-  console.log(this.statsService.dataForTable(this.groupItems))
+  this.oweMe = 0;
+  this.youOwe =0;
+let owesArray= this.statsService.dataForTable(this.groupItems);
+owesArray.map((owe)=>{
+  console.log(owe)
+ this.oweMe += Math.round(owe.oweMe);
+ this.youOwe += Math.round(owe.youOwe);
+})
 }
 
    openAddItem(){
@@ -125,6 +138,10 @@ checkIfMenu(index){
 return (this.selectedFriend === index)
 }
 
+getGroupStats(){
+  console.log(this.groupItems)
+  console.log(this.statsService.dataForTable(this.groupItems))
+}
 
 
 

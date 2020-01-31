@@ -16,7 +16,7 @@
         <div  style='margin-left:30px; margin-top: 10px'>
           <app-tool-tip  [splitArray]='splitArray' [total]='totalPrice'></app-tool-tip>
         </div>
-        <button class="delete-btn w3-xlarge"  (click)="this.userService.deleteItem(dataService.groupId,id)" > <i class="fa fa-trash "> </i> </button>
+        <button class="delete-btn w3-xlarge"  (click)="deleteItem()" > <i class="fa fa-trash "> </i> </button>
         </div>
         </div>
       </div>

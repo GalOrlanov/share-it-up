@@ -1,7 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output ,EventEmitter} from '@angular/core';
 import { UsersService } from '../users.service';
 import { DataServiceService } from '../data-service.service';
 import { RegisterService } from '../register.service';
+import { ServerApiService } from '../server-api.service';
+
 
 @Component({
   selector: 'app-item-card',
@@ -19,11 +21,16 @@ export class ItemCardComponent implements OnInit {
 @Input() id:any;
 @Input() currency:any;
 @Input() split:any;
-
+@Input() groupId: any;
+@Output() afterDelete: EventEmitter<any> = new EventEmitter()
 totalPrice="ss";
 splitArray=[]
 
-  constructor(public userService: UsersService,public dataService:DataServiceService,public registerService:RegisterService) {
+  constructor(
+    public userService: UsersService,
+    public dataService:DataServiceService,
+    public registerService:RegisterService,
+    private serverApi:ServerApiService) {
   
    }
 
@@ -40,7 +47,12 @@ calculateOwes(){
 
 }
 
-
+deleteItem(){
+  this.serverApi.deleteItem(this.groupId,this.id).then((res)=>{
+    this.afterDelete.emit(res)
+  })
+ 
+}
 
   hoverFunction(id){
     if(this.hover === id){
@@ -49,8 +61,5 @@ calculateOwes(){
     return false;
   }
 
-  showTooltip(){
-    
-  }
   
 }

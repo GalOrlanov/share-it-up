@@ -13,6 +13,7 @@
 </div>
 <hr class='details-seperate' />
 <div class='group-and-friends-wrapper'>
+        <div class='group-det'>
 <div class='groupandfriends none-mobile'>
 
         <p class='details-title '>Number of groups</p>
@@ -26,10 +27,12 @@
                         <p class='details-title'>Total Owe</p>
                         <p class='details-number'>{{getTotalOwe(false)}}</p>
                 </div>
+                
                 <div class='groupandfriends'>
                                 <p class='details-title'>Total owes</p>
                                 <p class='details-number'>{{myOwes}}</p>
                         </div>
+                </div>
 </div>
 </div>
 
@@ -42,7 +45,7 @@
                         <hr />
                         <div class='settle-box'>
                                 <div *ngFor='let settle of settleArray '>
-                                                <app-settle-up-card [name]='settle.name' [image]='this.statsService.getImageWithEmail(settle.email)' [youOwe]='settle.youOwe.toFixed(1)' [oweYou]='settle.oweMe.toFixed(1)'> </app-settle-up-card>
+                                                <app-settle-up-card [name]='settle.name' [image]='settle.image' [youOwe]='settle.youOwe.toFixed(1)' [oweYou]='settle.oweMe.toFixed(1)'> </app-settle-up-card>
                                 </div>
                                        
                                

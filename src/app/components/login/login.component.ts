@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
     this.registerService.userInfo = res;
     this.socketService.connectToSocket(res.email);
     sessionStorage.setItem('userinfo' , JSON.stringify(res));
-    
+    console.log(res)
     this.authService.loggedIn =true;
     this.router.navigateByUrl('/profile');
     this.groupService.getGroupsDetails(this.registerService.userInfo.groups);
@@ -63,7 +63,6 @@ export class LoginComponent implements OnInit {
    })
    .catch((rej)=>{ 
      console.log(rej.Error.msg);
-     alert(rej.Error.status)
     if(rej.Error.status=== 401){
      this.wrongLoginDetails=true;
     }})

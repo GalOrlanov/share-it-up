@@ -29,7 +29,6 @@ import { GroupComponent } from './group/group.component';
 import { AddItemComponent } from './add-item/add-item.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatDatepickerModule } from '@angular/material/datepicker';
 import {MatNativeDateModule, MatSliderModule, DateAdapter} from '@angular/material';
 import { FriendsComponent } from './components/friends/friends.component';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -53,6 +52,7 @@ import { FriendCardComponent } from './friend-card/friend-card.component';
 import { SettleUpCardComponent } from './settle-up-card/settle-up-card.component';
 import { MobileDrawerComponent } from './mobile-drawer/mobile-drawer.component';
 import {MatInputModule} from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -97,6 +97,7 @@ import {MatInputModule} from '@angular/material/input';
     Ng5SliderModule,
     MatInputModule,
     MatRadioModule,
+    MatDatepickerModule,
     FormsModule,
     HttpClientModule,
     RouterModule,

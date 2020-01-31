@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http'
+import { start } from 'repl';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,8 @@ export class ServerApiService {
 
 
  //url = "http://share-it-server.herokuapp.com"
-//url = "http://192.168.1.9:3000"
-url = "http://10.0.0.15:3000"
+url = "http://192.168.1.9:3000"
+//url = "http://10.0.0.15:3000"
 
 
 interactWithServer(requestType , obj , url , token){
@@ -119,10 +120,25 @@ deleteFriend(obj){
 
 
   /******************** Items  ***********************/
-  getItems(groupId){
-   let url = `${this.url}/items/${groupId}`
+  getItems(groupId,startDate,endDate){
+   let url = `${this.url}/items/${groupId}/${startDate}/${endDate}`
    return this.interactWithServer("GET",null,url,true)
   }
+
+  deleteItem(groupId,itemId){
+  let url = `${this.url}/items/${groupId}/${itemId}`
+  return this.interactWithServer("DELETE" , null , url ,true)
+  }
+
+  addItem(item){
+    let url = `${this.url}/items/`
+    return this.interactWithServer("POST" , item , url ,true)
+  }
+/******************* STATS *******************/
+getChartDetails(email,startDate,endDate){
+let url = `${this.url}/items/stats/${startDate}/${endDate}/${email}`
+return this.interactWithServer("GET", null , url, true )
+}
 
 
 }
